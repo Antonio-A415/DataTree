@@ -1,0 +1,14 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!-- Tamaño del rectángulo -->
+    <size
+        android:width="50dp"
+        android:height="10dp" />
+
+    <!-- Color de fondo del rectángulo -->
+    <solid android:color="#136900" />
+
+    <!-- Esquinas redondeadas -->
+    <corners android:radius="12dp" />
+</shape>
