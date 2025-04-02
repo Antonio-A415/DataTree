@@ -7,8 +7,33 @@
 
     <style name="Theme.Datatree" parent="Base.Theme.Datatree" />
 
-    <style name ="AnimationDialog">
+
+    <style name="Theme.Datatree.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+
+    <!-- Para el bottom sheet -->
+    <style name="AnimationDialog">
         <item name="android:windowEnterAnimation">@anim/slide_in</item>
         <item name="android:windowExitAnimation">@anim/slide_out</item>
+    </style>
+
+    <style name="CircularProgressBar" parent="Widget.AppCompat.ProgressBar">
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:progressDrawable">@drawable/circular_progress_agua_riego</item>
+        <item name="android:minWidth">100dp</item>
+        <item name="android:minHeight">100dp</item>
+    </style>
+
+    <style name="Theme.Datatree.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Datatree.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Theme.Datatree.Fullscreen" parent="Theme.Datatree">
+        <item name="android:actionBarStyle">@style/Widget.Theme.Datatree.ActionBar.Fullscreen</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@null</item>
     </style>
 </resources>

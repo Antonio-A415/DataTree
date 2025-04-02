@@ -2,30 +2,48 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
-    <group android:checkableBehavior="single">
+    <item android:title="@string/bienvenido_se_or_tony_stark"
+        android:tooltipText="Usuario de  DataTree"
+        android:id="@+id/label_welcome">
+        <menu>
+            <group android:checkableBehavior="single" >
 
-        <item android:id="@+id/nav_home"
-            android:icon="@drawable/home_24"
-            android:title="Hogar">
+                <item android:id="@+id/nav_home"
+                    android:icon="@drawable/home_24"
+                    android:title="@string/central"/>
 
-        </item>
+                <item android:id="@+id/nav_settigs"
+                    android:icon="@drawable/settings_24"
+                    android:title="@string/ajustes"/>
 
-        <item android:id="@+id/nav_settigs"
-            android:icon="@drawable/settings_24"
-            android:title="Ajustes"></item>
+                <item
+                    android:id="@+id/nav_profile"
+                    android:icon="@drawable/person_pin_24"
+                    android:title="@string/mi_perfil"/>
+            </group>
+        </menu>
 
-        <item
-            android:id="@+id/nav_profile"
-            android:icon="@drawable/person_pin_24"
-            android:title="Mi perfil"/>
-    </group>
+    </item>
+
+
+    <item android:title="@string/analitica">
+        <menu>
+            <item android:id="@+id/nav_estadisticas"
+                android:icon="@drawable/statistics"
+                android:title="@string/estadisticas"/>
+
+            <item android:id="@+id/nav_tools"
+                android:icon="@drawable/tools"
+                android:title="@string/herramientas"/>
+        </menu>
+    </item>
 
     <item
-        android:title="">
+        android:title="Salir">
         <menu>
             <item android:id="@+id/nav_logout"
                 android:icon="@drawable/logout_24"
-                android:title="Cerrar Sesión"></item>
+                android:title="@string/cerrar_sesion"/>
         </menu>
     </item>
 </menu>

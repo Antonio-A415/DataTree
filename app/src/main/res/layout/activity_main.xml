@@ -8,10 +8,12 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start"
     tools:context=".MainActivity">
+
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="56dp"
@@ -19,12 +21,41 @@
         android:elevation="4dp"
         android:background="@color/white"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        android:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+        android:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/notificacion"
+                android:layout_width="44sp"
+                android:layout_height="44sp"
+                android:layout_gravity="end"
+                app:lottie_autoPlay="false"
+                app:lottie_loop="false"
+                app:lottie_rawRes="@raw/icon_notified"/>
+            <TextView
+                android:id="@+id/notificaciones_cantidad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="9+"
+                android:textStyle="bold"
+                android:paddingEnd="11sp"
+                android:paddingTop="9sp"
+                android:paddingHorizontal="8sp"
+                android:textSize="7sp"
+                android:layout_gravity="top|end"/>
+        </FrameLayout>
+
+
+    </androidx.appcompat.widget.Toolbar>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/container" >
+        android:id="@+id/container">
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/fab"
@@ -37,6 +68,7 @@
             app:lottie_autoPlay="true"
             android:backgroundTint="@color/white"
             android:scaleType="centerInside"/>
+
     </FrameLayout>
 
 
@@ -50,6 +82,6 @@
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/nav_menu"
         app:itemIconTint="@color/black"
-        app:itemTextColor="@color/black" ></com.google.android.material.navigation.NavigationView>
+        app:itemTextColor="@color/black" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

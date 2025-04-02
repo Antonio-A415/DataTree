@@ -5,37 +5,75 @@
     android:orientation="vertical"
     android:padding="12dp"
     android:background="@drawable/bottom_dialog">
-<ImageView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:layout_margin="12dp"
-    android:src="@drawable/bar_24"/>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:textSize="36sp"
-        android:textColor="@color/black"
-        android:fontFamily="@font/poppins_medium"
-        android:text="Quickly está contigo"/>
+
+    <!-- Barra superior -->
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:layout_marginLeft="330dp"
-        android:src="@drawable/open_in_full_24"/>
-</LinearLayout>
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/logo"
-        android:scaleType="centerCrop"
         android:layout_gravity="center"
-        android:visibility="visible"/>
+        android:layout_margin="12dp"
+        android:src="@drawable/bar_24" />
+
+    <!-- Encabezado del chat -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Quickly está contigo"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/open_in_full_24"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+    <!-- Lista de mensajes -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewMessages"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        android:padding="8dp"
+        android:clipToPadding="false" />
+
+    <!-- Caja de entrada de mensajes -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <EditText
+            android:id="@+id/editTextMessage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Escribe un mensaje..."
+            android:padding="12dp"
+            android:textSize="16sp"
+            android:background="@android:color/transparent"
+            android:textColor="@color/black"
+            android:textColorHint="@color/green_strong" />
+
+        <ImageView
+            android:id="@+id/buttonSend"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/send"
+            android:contentDescription="Enviar mensaje"
+            android:padding="8dp" />
+    </LinearLayout>
+
 </LinearLayout>
