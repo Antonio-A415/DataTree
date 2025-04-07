@@ -37,6 +37,14 @@
                 android:title="@string/herramientas"/>
         </menu>
     </item>
+    <item android:title="Social">
+        <menu>
+            <item android:id="@+id/nav_chats"
+                android:icon="@drawable/auto_awesome_24"
+                android:title="chats"/>
+
+        </menu>
+    </item>
 
     <item
         android:title="Salir">

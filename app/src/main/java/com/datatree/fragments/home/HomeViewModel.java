@@ -2,6 +2,12 @@ package com.datatree.fragments.home;
 
 import androidx.lifecycle.ViewModel;
 
+import com.datatree.databinding.FragmentHomeBinding;
+
 public class HomeViewModel extends ViewModel {
-    // TODO: Implement the ViewModel
+    FragmentHomeBinding binding;
+
+    public HomeViewModel() {
+        
+    }
 }

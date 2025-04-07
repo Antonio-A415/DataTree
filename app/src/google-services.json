@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "144529151446",
+    "firebase_url": "https://datatree-677d0-default-rtdb.firebaseio.com",
+    "project_id": "datatree-677d0",
+    "storage_bucket": "datatree-677d0.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:144529151446:android:4ac8f6b662c2f071f98077",
+        "android_client_info": {
+          "package_name": "com.datatree"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAccCkxOpHlzOPRbnK4QCuZzDJwgMQq_EU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
