@@ -589,7 +589,7 @@ class VisorActivity : AppCompatActivity() {
         
         Ejemplo de formato esperado:
         {
-            "nombre": "Nombre de la planta",
+            "nombre": "Nombre de la planta (Nombre cienfico)",
             "sugerencias": "Sugerencias para el cuidado",
             "salud": 4
         }
@@ -820,12 +820,6 @@ class VisorActivity : AppCompatActivity() {
                         or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
                 //or View.SYSTEM_UI_FLAG_IMMERSIVE
                 )
-    }
-
-    private fun cicloFor() {
-        for (i in 1..5) {
-            print("EL numero es: ${i}")
-        }
     }
 
 

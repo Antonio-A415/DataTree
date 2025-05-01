@@ -50,12 +50,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activitys.visor.VisorOpenCV"
-            android:configChanges="orientation|screenSize"
-            android:exported="true"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.FluidWallpaper.FullScreen" />
+
         <activity
             android:name=".activitys.visor.VisorActivity"
             android:configChanges="orientation|screenSize"

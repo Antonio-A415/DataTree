@@ -51,7 +51,7 @@ class FirebaseClient @Inject constructor(
                     }
 
                 }else{
-                    //user doesnt exist, register the user
+                    //en caso contrario, crear al usuario con los camops.
                     dbRef.child(username).child(PASSWORD).setValue(password).addOnCompleteListener {
                         dbRef.child(username).child(STATUS).setValue(UserStatus.ONLINE)
                             .addOnCompleteListener {
@@ -153,11 +153,7 @@ class FirebaseClient @Inject constructor(
             .addOnCompleteListener { function() }
     }
 
-
     interface Listener {
         fun onLatestEventReceived(event:DataModel)
     }
-
-
-
 }

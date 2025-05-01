@@ -12,8 +12,8 @@
         android:id="@+id/remoteView"/>
 
     <org.webrtc.SurfaceViewRenderer
-        android:layout_width="100dp"
-        android:layout_height="150dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:id="@+id/localView"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
@@ -100,11 +100,5 @@
             android:id="@+id/screenShareButton"
             android:background="@android:color/transparent"
             android:src="@drawable/ic_screen_share"/>
-
-
     </LinearLayout>
-
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

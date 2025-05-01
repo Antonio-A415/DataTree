@@ -122,7 +122,6 @@ dependencies {
     //Dependencia para webrtc
     implementation("com.mesibo.api:webrtc:1.0.5")
 
-
     //Para el modulo Extensions.kt
     implementation("com.guolindev.permissionx:permissionx:1.8.1")
 

@@ -4,128 +4,135 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context=".ui.login.Login"
     android:background="@color/white">
 
-    <!-- CardView para contener los campos de login -->
-
-    <ImageView
-        android:id="@+id/lottieAnimationView"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        app:layout_constraintBottom_toTopOf="@+id/cardView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.584"
-        android:src="@drawable/logo"/>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:backgroundTint="@color/white"
-        android:padding="24dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
+        android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="12dp"
-            android:gravity="center"
             android:orientation="vertical">
+            <ImageView
+                android:id="@+id/lottieAnimationView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:contentDescription="@string/contentDescription_Logo"
+                app:layout_constraintBottom_toTopOf="@+id/cardView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/logo_recorte"/>
 
-            <!-- Título -->
-            <TextView
-                android:id="@+id/tv_welcome"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:fontFamily="@font/poppins_medium"
-                android:layout_gravity="left"
-                android:text="Bienvenido"
-                android:textColor="@color/black"
-                android:textSize="22sp"
-                android:textStyle="bold" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:fontFamily="@font/poppins_medium"
-                android:layout_gravity="left"
-                android:text="Tu nombre"
-                android:textColor="@color/black"
-                android:textSize="12sp" />
-            <!-- Campo de email -->
-            <EditText
-                android:id="@+id/et_name"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:background="@drawable/backgroun_edittext"
-                android:fontFamily="@font/poppins_medium"
-                android:hint="Tú te llamas..."
-                android:inputType="text"
-                android:textSize="14sp"
-                android:padding="10dp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12sp"
-                android:fontFamily="@font/poppins_medium"
-                android:layout_gravity="left"
-                android:text="Tu clave secreta"
-                android:textColor="@color/black"
-                android:textSize="12sp" />
-            <!-- Campo de contraseña -->
-            <EditText
-                android:id="@+id/et_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/backgroun_edittext"
-                android:fontFamily="@font/poppins_medium"
-                android:hint="8 dígitos"
-                android:textSize="14sp"
-                android:inputType="textPassword"
-                android:padding="10dp" />
+                android:layout_margin="20dp"
+                android:backgroundTint="@color/white"
+                android:padding="24dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-            <!-- Texto de recuperar contraseña -->
-            <TextView
-                android:id="@+id/tv_forgot_password"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginBottom="16dp"
-                android:text="Forgot password?"
-                android:textColor="@color/green_low"
-                android:textSize="12sp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-            <!-- Botón de login -->
-            <Button
-                android:id="@+id/btn_login"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:backgroundTint="@color/green_low"
-                android:fontFamily="@font/poppins_medium"
-                android:text="Vamos"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                app:icon="@drawable/open_new_next"
-                app:iconGravity="end"
-                app:iconPadding="0dp" />
+                    <!-- Título -->
+                    <TextView
+                        android:id="@+id/tv_welcome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:layout_gravity="left"
+                        android:text="Bienvenido"
+                        android:textColor="@color/black"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:layout_gravity="left"
+                        android:text="Tu nombre"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+                    <!-- Campo de email -->
+                    <EditText
+                        android:id="@+id/et_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:background="@drawable/backgroun_edittext"
+                        android:fontFamily="@font/poppins_medium"
+                        android:hint="Tú te llamas..."
+                        android:inputType="text"
+                        android:textSize="14sp"
+                        android:padding="10dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12sp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:layout_gravity="left"
+                        android:text="Tu clave secreta"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+                    <!-- Campo de contraseña -->
+                    <EditText
+                        android:id="@+id/et_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/backgroun_edittext"
+                        android:fontFamily="@font/poppins_medium"
+                        android:hint="8 dígitos"
+                        android:textSize="14sp"
+                        android:inputType="textPassword"
+                        android:padding="10dp" />
 
+                    <!-- Texto de recuperar contraseña -->
+                    <TextView
+                        android:id="@+id/tv_forgot_password"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginBottom="16dp"
+                        android:text="Recuperar contraseña"
+                        android:textColor="@color/green_low"
+                        android:textSize="12sp" />
+
+                    <!-- Botón de login -->
+                    <Button
+                        android:id="@+id/btn_login"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:backgroundTint="@color/green_low"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Iniciar sesión"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        app:icon="@drawable/open_new_next"
+                        app:iconGravity="end"
+                        app:iconPadding="0dp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

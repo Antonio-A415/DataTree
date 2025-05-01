@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/white"
     android:layout_margin="10dp"
     android:paddingTop="15dp">
 
@@ -12,12 +13,33 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/logo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/statusTv"
-        app:layout_constraintHorizontal_bias="0.06"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.344" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <TextView
+        android:id="@+id/usernameTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Tony Stark"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/idInstitucion"
+        app:layout_constraintTop_toTopOf="@id/idInstitucion"
+        app:layout_constraintEnd_toStartOf="@id/lottieVerified" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieVerified"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true"
+        app:lottie_rawRes="@raw/verified"
+        app:layout_constraintStart_toEndOf="@id/usernameTv"
+        app:layout_constraintTop_toTopOf="@id/usernameTv" />
 
     <TextView
         android:id="@+id/statusTv"
@@ -26,105 +48,53 @@
         android:fontFamily="@font/poppins_medium"
         android:text="En línea"
         android:textColor="@color/black"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.955"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.416" />
-
-    <TextView
-        android:id="@+id/usernameTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:fontFamily="@font/poppins_medium"
-        android:text="Tony Stark"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/lottieVerified"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@id/idInstitucion"
-        app:layout_constraintTop_toTopOf="@id/idInstitucion"
-        app:layout_constraintVertical_bias="0.009" />
-
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/lottieVerified"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.685"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:lottie_autoPlay="true"
-        app:lottie_rawRes="@raw/verified" />
+        app:layout_constraintTop_toBottomOf="@id/usernameTv" />
 
     <TextView
         android:id="@+id/tvDireccion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_medium"
-        android:paddingBottom="5sp"
         android:text="Cerca de tu zona agrícola"
         android:textColor="#6E6C6C"
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.02"
-        app:layout_constraintStart_toStartOf="@id/usernameTv"
-        app:layout_constraintTop_toBottomOf="@id/usernameTv"
-        app:layout_constraintVertical_bias="0.161" />
+        app:layout_constraintStart_toStartOf="@id/statusTv"
+        app:layout_constraintTop_toBottomOf="@id/statusTv" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/btnMessage"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginStart="30sp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="66dp"
         android:layout_marginBottom="15dp"
         android:paddingTop="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.257"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/usernameTv"
-        app:layout_constraintVertical_bias="1.0"
+        android:visibility="gone"
         app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/message" />
+        app:lottie_rawRes="@raw/message"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/idInstitucion" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/audioCallBtn"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.12"
-        app:layout_constraintStart_toEndOf="@id/btnMessage"
-        app:layout_constraintTop_toBottomOf="@+id/usernameTv"
-        app:layout_constraintVertical_bias="0.705"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        app:lottie_rawRes="@raw/call" />
+        app:lottie_rawRes="@raw/call"
+        app:layout_constraintStart_toEndOf="@id/btnMessage"
+        app:layout_constraintTop_toBottomOf="@id/tvDireccion" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/videoCallBtn"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.142"
-        app:layout_constraintStart_toEndOf="@id/audioCallBtn"
-        app:layout_constraintTop_toBottomOf="@+id/lottieVerified"
-        app:layout_constraintVertical_bias="0.716"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        app:lottie_rawRes="@raw/video_call_icon" />
+        app:lottie_rawRes="@raw/video_call_icon"
+        app:layout_constraintStart_toEndOf="@id/audioCallBtn"
+        app:layout_constraintTop_toTopOf="@id/audioCallBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
