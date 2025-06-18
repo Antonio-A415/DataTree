@@ -21,6 +21,9 @@ class Itemsplants {
         this.nombre2 = nombre2
     }
 
+
+
+
     // Otro constructor secundario con un valor por defecto
 
 

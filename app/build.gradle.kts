@@ -55,7 +55,8 @@ dependencies {
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
 
     implementation("androidx.appcompat:appcompat:1.7.0")
-    implementation("com.google.android.material:material:1.12.0")
+    implementation("com.google.android.material:material:1.11.0")
+
     implementation("androidx.constraintlayout:constraintlayout:2.2.0")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
 
@@ -128,6 +129,16 @@ dependencies {
     //Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    //photo view para manipulacion e interaccion de imagenes
+    implementation("com.github.chrisbanes:PhotoView:2.3.0")
+
+    //imagenes redondeadas
+    implementation("de.hdodenhof:circleimageview:3.1.0")
+
+    //cargar imagenes
+    kapt("com.github.bumptech.glide:compiler:4.16.0")
+    implementation("com.github.bumptech.glide:glide:4.16.0")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")

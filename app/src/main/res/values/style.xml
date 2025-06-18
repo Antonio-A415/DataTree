@@ -17,6 +17,5 @@
         <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
     </style>
 
-    <!-- De Material2 -->
 
 </resources>

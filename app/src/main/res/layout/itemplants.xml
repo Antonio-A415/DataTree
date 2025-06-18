@@ -3,81 +3,378 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingBottom="20dp"
-    android:paddingTop="20dp">
-    <androidx.cardview.widget.CardView
-        android:id="@+id/plant"
+    android:background="@color/md_theme_surface"
+    android:paddingBottom="5dp">
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/plant_card"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:cardCornerRadius="5sp"
-        android:background="@color/green_low"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:backgroundTint="@color/md_theme_surface"
+        style="@style/Widget.Material3.CardView.Outlined">
 
+        <!-- Banner y nombres -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
             android:orientation="vertical">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/car1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                app:cardCornerRadius="12dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true">
-
-                <ImageView
-                    android:id="@+id/imgId"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:src="@drawable/chile"/>
-            </androidx.cardview.widget.CardView>
-
-            <LinearLayout
-                android:id="@+id/card2"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_toRightOf="@id/car1">
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imgId"
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/tomate" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:background="@drawable/image_gradient_bottom" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_margin="10sp"
-                    android:layout_gravity="center">
+                    android:layout_gravity="bottom"
+                    android:padding="16dp">
+
                     <TextView
                         android:id="@+id/namId"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:text="Tomate"
+                        android:textAppearance="?attr/textAppearanceHeadlineMedium"
+                        android:textColor="@color/white"
                         android:fontFamily="@font/poppins_medium"
-                        android:textColor="@color/green_low"
-                        android:textSize="18sp"
-                        android:text="Rabano"
-                        android:paddingBottom="8dp"
-                        android:textStyle="bold|italic"
-                        android:layout_gravity="center"/>
+                        android:shadowColor="@color/black"
+                        android:shadowRadius="10"
+                        android:shadowDx="1"
+                        android:shadowDy="1" />
+
                     <TextView
                         android:id="@+id/nam2Id"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:text="Tomies Sciules"
+                        android:textAppearance="?attr/textAppearanceBodyLarge"
+                        android:textColor="@color/white"
                         android:fontFamily="@font/poppins_medium"
-                        android:textColor="@color/green_more_strong"
-                        android:textSize="16sp"
-                        android:paddingBottom="8dp"
-                        android:layout_gravity="center"
-                        android:padding="10dp"
-                        android:text="Nombre cientifico"/>
+                        android:fontStyle="italic"
+                        android:shadowColor="@color/black"
+                        android:shadowRadius="5"
+                        android:shadowDx="1"
+                        android:shadowDy="1" />
                 </LinearLayout>
+            </FrameLayout>
 
+            <!-- Chips row -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:padding="5dp"
+                android:clipToPadding="false">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:singleLine="true">
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipAdd_plant"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lo quiero"
+
+                        app:chipIcon="@drawable/add_24"
+                        style="@style/Widget.Material3.Chip.Assist" />
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Comestible"
+                        app:chipIcon="@drawable/eco_24"
+                        style="@style/Widget.Material3.Chip.Assist" />
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Fácil cultivo"
+                        app:chipIcon="@drawable/eco_24"
+                        style="@style/Widget.Material3.Chip.Assist" />
+
+                    <com.google.android.material.chip.Chip
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Clima templado"
+                        app:chipIcon="@drawable/thermostat_24"
+                        style="@style/Widget.Material3.Chip.Assist" />
+                </com.google.android.material.chip.ChipGroup>
+            </HorizontalScrollView>
+
+            <!-- Información de cultivo -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <!-- Sección de características principales -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:backgroundTint="@color/md_theme_surfaceVariant"
+                    app:cardElevation="5dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="16dp">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:src="@drawable/water_ph_24"
+                                app:tint="@color/blue_strong" />
+
+                            <TextView
+                                android:id="@+id/necesidadesRiegoId"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Riego moderado"
+                                android:textAppearance="?attr/textAppearanceBodyMedium"
+                                android:textAlignment="center"
+                                android:layout_marginTop="4dp"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:src="@drawable/light_mode_24"
+                                app:tint="@color/yellow_strong" />
+
+                            <TextView
+                                android:id="@+id/exposicionSolarId"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Sol pleno"
+                                android:textAppearance="?attr/textAppearanceBodyMedium"
+                                android:textAlignment="center"
+                                android:layout_marginTop="4dp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:src="@drawable/add_24"
+                                app:tint="@color/green_more_strong" />
+
+                            <TextView
+                                android:id="@+id/tipoSueloId"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Suelo franco"
+                                android:textAppearance="?attr/textAppearanceBodyMedium"
+                                android:textAlignment="center"
+                                android:layout_marginTop="4dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+
+                <!-- Sección de tiempos -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    app:cardBackgroundColor="@color/md_theme_surfaceVariant"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Ciclo de vida"
+                            android:textAppearance="?attr/textAppearanceTitleMedium"
+                            android:drawableStart="@drawable/eco_24"
+                            android:textColor="@color/md_theme_onPrimaryContainer"
+                            android:drawableTint="@color/md_theme_onPrimaryContainer"
+                            android:drawablePadding="8dp"
+                            android:textStyle="bold"
+                            android:gravity="center_vertical"
+                            android:paddingBottom="12dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Germinación"
+                                    android:textAppearance="?attr/textAppearanceBody2"
+                                    android:textStyle="bold"/>
+
+                                <TextView
+                                    android:id="@+id/tiempoGerminacionId"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="5-7 días"
+                                    android:textAppearance="?attr/textAppearanceBodyLarge" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Cosecha"
+                                    android:textAppearance="?attr/textAppearanceBody2"
+                                    android:textStyle="bold"/>
+
+                                <TextView
+                                    android:id="@+id/tiempoCosechaId"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="25-30 días"
+                                    android:textAppearance="?attr/textAppearanceBodyLarge" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Distancia"
+                                    android:textAppearance="?attr/textAppearanceBody2"
+                                    android:textStyle="bold"/>
+
+                                <TextView
+                                    android:id="@+id/distanciaSiembraId"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="10-15 cm"
+                                    android:textAppearance="?attr/textAppearanceBodyLarge" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+
+                <!-- Ubicación -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    app:cardBackgroundColor="@color/md_theme_surfaceVariant"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="5dp"
+                    app:strokeWidth="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Ubicación"
+                            android:textAppearance="?attr/textAppearanceTitleMedium"
+                            android:drawableStart="@drawable/location_on_24"
+                            android:drawableTint="@color/accent_red"
+                            android:textColor="@color/md_theme_onPrimaryContainer"
+                            android:drawablePadding="8dp"
+                            android:gravity="center_vertical"
+                            android:paddingBottom="12dp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/ubicacionId"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Huerto exterior / Maceta"
+                            android:textAppearance="?attr/textAppearanceBody2"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Botones de acción -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="end">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/shareButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Compartir"
+                        android:textColor="@color/white"
+                        app:iconPadding="5dp"
+                        app:iconTint="@color/white"
+                        app:icon="@drawable/share_24"
+                        style="@style/Widget.Material3.Button.IconButton.Filled"
+                        android:layout_marginEnd="8dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/verMasButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ver guía completa"
+                        android:textColor="@color/white"
+                        style="@style/Widget.Material3.Button.IconButton.Filled"/>
+                </LinearLayout>
             </LinearLayout>
-
-
-
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

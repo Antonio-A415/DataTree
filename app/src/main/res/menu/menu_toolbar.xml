@@ -12,7 +12,6 @@
         android:id="@+id/action_add"
         android:title=""
         android:icon="@drawable/add_24"
-
         app:showAsAction="ifRoom"/>
     <!-- para alinear en horizontal se usa ifRoom -->
 </menu>

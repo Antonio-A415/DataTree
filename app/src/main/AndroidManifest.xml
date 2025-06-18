@@ -3,6 +3,59 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.datatree">
 
+    <!-- Bluetooth permissions -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+    <!-- For Android 12+ (API 31+) -->
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+
+    <!-- Location permissions for Bluetooth scanning -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <!-- Network permissions for WiFi communication (alternative to Bluetooth) -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+
+    <!-- Storage permissions for data logging -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <!-- Notification permissions for monitoring alerts -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- Foreground service permission for continuous monitoring -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!-- Hardware features -->
+    <uses-feature
+        android:name="android.hardware.bluetooth"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.bluetooth_le"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.wifi"
+        android:required="false" />
+
+    <!-- Background Service for continuous monitoring -->
+
+
+    <!-- Broadcast Receiver for Bluetooth state changes -->
+
+
+    <!-- File Provider for sharing data/logs -->
+
+
+    <!-- Notification channels for Android 8+ -->
+    <meta-data
+        android:name="com.google.android.gms.version"
+        android:value="@integer/google_play_services_version" />
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
@@ -16,6 +69,7 @@
         android:name="android.hardware.camera.front.autofocus"
         android:required="false" />
 
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
@@ -39,18 +93,24 @@
         android:roundIcon="@mipmap/ic_icon_app_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Datatree"
-        tools:targetApi="31" >
+        tools:targetApi="31">
+        <activity
+            android:name=".activitys.informationplanta.PlantaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activitys.newpost.NewPostActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.login.Login"
             android:exported="true"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Datatree.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".activitys.visor.VisorActivity"
             android:configChanges="orientation|screenSize"
@@ -67,14 +127,10 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
-
-        </activity>
-
+            android:theme="@style/Theme.Datatree.MainActivity" />
         <activity
             android:name=".ui.CallActivity"
             android:exported="true" />
-
         <activity
             android:name=".ui.ListaUsuarios"
             android:exported="true" />

@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md_theme_surface">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_alert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="6dp"
+        android:stateListAnimator="@animator/card_elevation_animator"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardCornerRadius="15dp"
+        android:layout_marginBottom="5dp"
+        android:backgroundTint="@color/md_theme_surface"
+        style="@style/Widget.Material3.CardView.Outlined">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!-- Header Layout -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:background="@color/md_theme_surface">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profile_image"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/chile"
+                    app:civ_border_width="2dp"
+                    app:civ_border_color="@color/white"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/profile_image"
+                    android:layout_marginStart="5dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txt_user"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Antonio"
+                        android:fontFamily="@font/poppins_medium"
+                        android:textColor="@color/md_theme_onSurface"
+                        android:textSize="16sp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:id="@+id/txt_region"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Yucatán"
+                                android:drawableStart="@drawable/location_on_24"
+                                android:drawablePadding="8dp"
+                                android:fontFamily="@font/poppins_medium"
+                                android:textColor="@color/md_theme_onSurface"
+                                android:textSize="12sp"/>
+
+                            <View
+                                android:layout_width="4dp"
+                                android:layout_height="4dp"
+                                android:layout_gravity="center"
+                                android:layout_marginHorizontal="8dp"
+                                android:background="@drawable/dot_separator"/>
+
+                            <TextView
+                                android:id="@+id/txt_time"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="14:32"
+                                android:drawableStart="@drawable/access_time_24"
+                                android:drawablePadding="8dp"
+                                android:fontFamily="@font/poppins_medium"
+                                android:textColor="@color/md_theme_onSurface"
+                                android:textSize="12sp"/>
+
+                        </LinearLayout>
+
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_category"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:backgroundTint="@color/green_low"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Hortalizas"
+                            android:textAlignment="center"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            app:icon="@drawable/eco_24"
+                            app:iconGravity="textStart"
+                            app:iconPadding="5dp"
+                            app:iconTint="@color/white"
+                            style="@style/Widget.Material3.Button.IconButton.Filled"/>
+
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </RelativeLayout>
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txt_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Exceso de humedad"
+                style="@style/TextAppearance.Material3.TitleMedium"/>
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="El exceso de humedad afecta en gran medida a los cultivos."
+                style="@style/TextAppearance.Material3.BodyMedium"/>
+            <!-- Image Carousel/ViewPager -->
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/image_viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:contentDescription="Imágenes del cultivo"
+                android:transitionName="shared_image"/>
+
+            <!-- Image Indicator -->
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/image_indicator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:backgroundTint="@color/md_theme_surface"
+                app:tabGravity="center"
+                app:tabIndicatorHeight="0dp">
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Métricas"/>
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Geoinformación"/>
+            </com.google.android.material.tabs.TabLayout>
+
+            <!-- Content Section -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="5dp"
+                style="@style/Widget.Material3.CardView.Outlined">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@color/md_theme_surface"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/txt_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Se muestra el crecimiento del chile habanero durante la etapa vegetativa. El riego fue controlado con sensores de humedad del suelo."
+                        android:textSize="14sp"
+                        android:textColor="@color/md_theme_onSurface"
+                        android:fontFamily="@font/poppins_medium"
+                        android:lineSpacingExtra="4dp"
+                        style="@style/TextAppearance.Material3.TitleMedium"/>
+
+                    <!-- Alert Indicators -->
+                    <LinearLayout
+                        android:id="@+id/layout_indicators"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="16dp"
+                        android:animateLayoutChanges="true">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="8dp"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="5dp"
+                            app:cardBackgroundColor="@color/md_theme_surfaceVariant"
+                            style="@style/Widget.Material3.CardView.Elevated">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="center"
+                                android:padding="8dp">
+
+                                <ImageView
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"
+                                    android:src="@drawable/humidity_percentage_24"
+                                    app:tint="@color/indicator_humidity"/>
+
+                                <TextView
+                                    android:id="@+id/txt_humidity"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="78%"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/indicator_humidity"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Humedad"
+                                    android:textSize="12sp"
+                                    android:textColor="@color/md_theme_onSurface"
+                                    style="@style/TextAppearance.Material3.TitleMedium"/>
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_weight="1"
+                            android:layout_marginHorizontal="4dp"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="5dp"
+                            app:cardBackgroundColor="@color/md_theme_surfaceVariant"
+                            style="@style/Widget.Material3.CardView.Elevated">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="center"
+                                android:padding="8dp">
+
+                                <ImageView
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"
+                                    android:src="@drawable/thermostat_24"
+                                    app:tint="@color/indicator_temp"/>
+
+                                <TextView
+                                    android:id="@+id/txt_temperature"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="32°C"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/indicator_temp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Temperatura"
+                                    android:textSize="12sp"
+                                    android:textColor="@color/md_theme_onSurface"
+                                    style="@style/TextAppearance.Material3.TitleMedium"/>
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="0dp"
+                            android:layout_height="80dp"
+                            android:layout_weight="1"
+                            android:layout_marginStart="8dp"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="5dp"
+                            app:cardBackgroundColor="@color/md_theme_surfaceVariant"
+                            style="@style/Widget.Material3.CardView.Elevated">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="center"
+                                android:padding="8dp">
+
+                                <ImageView
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"
+                                    android:src="@drawable/water_ph_24"
+                                    app:tint="@color/indicator_ph"/>
+
+                                <TextView
+                                    android:id="@+id/txt_ph"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="6.5"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/indicator_ph"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="pH"
+                                    android:textSize="12sp"
+                                    android:textColor="@color/md_theme_onSurface"
+                                    style="@style/TextAppearance.Material3.TitleMedium"/>
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+                    <!-- Action Buttons -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="10dp"
+                        android:gravity="center_vertical"
+                        android:background="@color/md_theme_surface">
+                        <!-- Like Button -->
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_like"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            app:icon="@drawable/favorite_border_24"
+                            app:iconTint="@color/white"
+                            app:iconSize="20dp"
+                            app:cornerRadius="15dp"
+                            app:iconGravity="textStart"
+                            app:iconPadding="8dp"
+                            android:backgroundTint="@color/green_more_strong"
+                            app:rippleColor="?attr/colorPrimaryContainer"
+                            style="@style/Widget.Material3.Button.IconButton.Filled"/>
+
+                        <!-- Comment Button -->
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_comment"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginStart="10dp"
+                            app:icon="@drawable/forum_24"
+                            app:iconTint="@color/white"
+                            app:iconSize="20dp"
+                            app:cornerRadius="15dp"
+                            app:iconGravity="textStart"
+                            app:iconPadding="8dp"
+                            app:rippleColor="?attr/colorPrimaryContainer"
+                            android:backgroundTint="@color/green_more_strong"
+                            style="@style/Widget.Material3.Button.IconButton.Filled"/>
+
+                        <!-- Share Button -->
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_share"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            app:icon="@drawable/share_24"
+                            app:iconTint="@color/white"
+                            app:iconSize="20dp"
+                            app:cornerRadius="15dp"
+                            app:iconGravity="textStart"
+                            app:iconPadding="8dp"
+                            app:rippleColor="?attr/colorPrimaryContainer"
+                            android:backgroundTint="@color/green_more_strong"
+                            style="@style/Widget.Material3.Button.IconButton.Filled"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

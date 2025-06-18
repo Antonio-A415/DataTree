@@ -2,6 +2,7 @@ package com.datatree.fragments.home;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.datatree.R;
+import com.datatree.activitys.informationplanta.PlantaActivity;
 import com.datatree.databinding.FragmentHomeBinding;
 import com.datatree.infraestructure.adapters.CultivosAdapter;
 import com.datatree.infraestructure.dataclass.Itemsplants;
@@ -25,6 +27,9 @@ import com.datatree.infraestructure.dataclass.Resultslands;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 
 public class HomeFragment extends Fragment {
 
@@ -45,9 +50,6 @@ public class HomeFragment extends Fragment {
             R.drawable.rabano
     ));
 
-    private String[] listimge2 = {
-            "hola", "Tomas", "Maria", "Juan", "Rosa", "Esteban"
-    };
 
 
     public static HomeFragment newInstance() {
@@ -68,16 +70,26 @@ public class HomeFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = new HomeViewModel();
         List<Itemsplants> list = new ArrayList<>();
-        list.add(new Itemsplants(0, "VEGETALES", R.drawable.frutas));
+        list.add(new Itemsplants(0, "Vegetales", R.drawable.frutas));
         //list.add(new Itemsplants(1, "Rabano", "Raphanus sativus", R.drawable.rabano));
         list.add(new Itemsplants(1, "Tomate", "Solanum lycopersicum", R.drawable.tomate));
         list.add(new Itemsplants(1, "Habanero", "Capsicum chinense Habanero Group", R.drawable.habanero));
-        list.add(new Itemsplants(0, "HORTALIZAS", R.drawable.hortalizas));
+
+        list.add(new Itemsplants(0, "Hortalizas", R.drawable.hortalizas));
         list.add(new Itemsplants(1, "Cilantro", "Coriandrum sativum", R.drawable.cilantro));
         list.add(new Itemsplants(1, "Epazote", "Dysphania ambrosioides", R.drawable.epazote));
         list.add(new Itemsplants(1, "Tomate", "Solanum lycopersicum", R.drawable.tomate));
 
-        CultivosAdapter adapter = new CultivosAdapter(list, requireContext());
+        CultivosAdapter adapter = new CultivosAdapter(list, requireContext(), new Function1<Itemsplants, Unit>() {
+            @Override
+            public Unit invoke(Itemsplants itemsplants) {
+
+                Intent intentInfoPlanta = new Intent(getContext(), PlantaActivity.class);
+                startActivity(intentInfoPlanta);
+                return null;
+            }
+        });
+
         binding.recc.setLayoutManager(new LinearLayoutManager(requireContext()));
         binding.recc.setAdapter(adapter);
 

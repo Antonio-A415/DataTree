@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
-    <item android:title="@string/bienvenido_se_or_tony_stark"
+    <item android:title="Creado para ti"
         android:tooltipText="Usuario de  DataTree"
         android:id="@+id/label_welcome">
         <menu>
@@ -42,6 +42,9 @@
             <item android:id="@+id/nav_chats"
                 android:icon="@drawable/auto_awesome_24"
                 android:title="chats"/>
+            <item android:id="@+id/nav_feed"
+                android:icon="@drawable/water_ph_24"
+                android:title="Mi Feed"/>
 
         </menu>
     </item>

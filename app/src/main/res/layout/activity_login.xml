@@ -1,138 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.login.Login"
-    android:background="@color/white">
+    android:background="@color/md_theme_primaryContainer">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <ImageView
-                android:id="@+id/lottieAnimationView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:contentDescription="@string/contentDescription_Logo"
-                app:layout_constraintBottom_toTopOf="@+id/cardView"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:src="@drawable/logo_recorte"/>
+            android:orientation="vertical"
+            android:padding="5dp">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:layout_gravity="center"
+                android:layout_margin="30dp"
+                app:civ_border_width="5dp"
+                app:civ_border_color="@color/md_theme_inversePrimary_mediumContrast"
+                android:src="@drawable/icon"/>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardView"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/login_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:backgroundTint="@color/white"
-                android:padding="24dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:cardCornerRadius="28dp"
+                android:layout_margin="10dp"
+                app:cardElevation="2dp"
+                android:backgroundTint="@color/md_theme_onSecondary"
+                style="@style/Widget.Material3.CardView.Elevated">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="12dp"
-                    android:gravity="center"
+                    android:padding="24dp"
                     android:orientation="vertical">
 
-                    <!-- Título -->
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/tv_welcome"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="16dp"
-                        android:fontFamily="@font/poppins_medium"
-                        android:layout_gravity="left"
+                        android:layout_gravity="start"
                         android:text="Bienvenido"
-                        android:textColor="@color/black"
-                        android:textSize="22sp"
-                        android:textStyle="bold" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="16dp"
+                        android:textSize="16sp"
+                        android:textColor="@color/md_theme_primary_highContrast"
                         android:fontFamily="@font/poppins_medium"
-                        android:layout_gravity="left"
-                        android:text="Tu nombre"
-                        android:textColor="@color/black"
-                        android:textSize="12sp" />
-                    <!-- Campo de email -->
-                    <EditText
-                        android:id="@+id/et_name"
+                        style="@style/TextAppearance.Material3.TitleMedium" />
+
+                    <!-- Name field -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/name_text_input"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="12dp"
-                        android:background="@drawable/backgroun_edittext"
-                        android:fontFamily="@font/poppins_medium"
-                        android:hint="Tú te llamas..."
-                        android:inputType="text"
-                        android:textSize="14sp"
-                        android:padding="10dp" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="12sp"
-                        android:fontFamily="@font/poppins_medium"
-                        android:layout_gravity="left"
-                        android:text="Tu clave secreta"
-                        android:textColor="@color/black"
-                        android:textSize="12sp" />
-                    <!-- Campo de contraseña -->
-                    <EditText
-                        android:id="@+id/et_password"
+                        android:layout_marginBottom="16dp"
+                        android:hint="Tu nombre"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:fontFamily="@font/poppins_medium"
+                            android:textSize="14sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Password field -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/password_text_input"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
-                        android:background="@drawable/backgroun_edittext"
-                        android:fontFamily="@font/poppins_medium"
-                        android:hint="8 dígitos"
-                        android:textSize="14sp"
-                        android:inputType="textPassword"
-                        android:padding="10dp" />
+                        android:hint="Tu clave secreta"
+                        app:endIconMode="password_toggle"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
 
-                    <!-- Texto de recuperar contraseña -->
-                    <TextView
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_password"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPassword"
+                            android:fontFamily="@font/poppins_medium"
+                            android:textSize="14sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/tv_forgot_password"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
-                        android:layout_marginBottom="16dp"
+                        android:layout_marginBottom="24dp"
                         android:text="Recuperar contraseña"
-                        android:textColor="@color/green_low"
-                        android:textSize="12sp" />
+                        android:textColor="@color/green_more_strong"
+                        style="@style/TextAppearance.Material3.BodyMedium" />
 
-                    <!-- Botón de login -->
-                    <Button
+                    <!-- Login button -->
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/btn_login"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:backgroundTint="@color/green_low"
-                        android:fontFamily="@font/poppins_medium"
-                        android:text="Iniciar sesión"
-                        android:textAlignment="center"
-                        android:textColor="@color/white"
                         android:textSize="16sp"
-                        app:icon="@drawable/open_new_next"
-                        app:iconGravity="end"
-                        app:iconPadding="0dp" />
+                        android:text="Iniciar sesión"
+                        android:fontFamily="@font/poppins_medium"
+                        app:icon="@drawable/eco_24"
+                        app:iconTint="@color/white"
+                        app:iconPadding="8dp"
+                        app:iconGravity="textStart"
+                        android:textColor="@color/white"
+                        android:backgroundTint="@color/green_more_strong"
+                        style="@style/ThemeOverlay.Material3.Button.ElevatedButton"/>
 
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

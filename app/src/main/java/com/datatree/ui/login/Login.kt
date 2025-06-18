@@ -25,8 +25,8 @@ class Login : AppCompatActivity() {
         views= ActivityLoginBinding.inflate(layoutInflater)
         setContentView(views.root)
         init()
-        val windowsActual= window  //referencia a la ventana
-        windowsActual.statusBarColor= ContextCompat.getColor(this, R.color.green_more_strong)
+        //val windowsActual= window  //referencia a la ventana
+        //windowsActual.statusBarColor= ContextCompat.getColor(this, R.color.green_more_strong)
     }
 
     private fun makeToast(msg: String){

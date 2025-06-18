@@ -30,7 +30,9 @@ import com.airbnb.lottie.LottieAnimationView;
 import com.datatree.activitys.cultivos.CultivosActivity;
 import com.datatree.activitys.profile.Profile;
 import com.datatree.activitys.visor.VisorActivity;
+import com.datatree.fragments.analytics.AnalyticsFragment;
 import com.datatree.fragments.chatsfragment.ChatsFragment;
+import com.datatree.fragments.feedfragment.FeedFragment;
 import com.datatree.infraestructure.adapters.ChatAdapter;
 import com.datatree.databinding.ActivityMainBinding;
 import com.datatree.infraestructure.dataclass.DataMessage;
@@ -105,14 +107,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void loadSampleMessages() {
-        // Mensajes de ejemplo predefinidos
-        messageList.add(new DataMessage("¡Hola! ¿Cómo estás?", false)); // Mensaje del bot
-        messageList.add(new DataMessage("Estoy bien, gracias. ¿Y tú?", true)); // Mensaje del usuario
-        messageList.add(new DataMessage("Yo también estoy bien. ¿En qué puedo ayudarte?", false)); // Mensaje del bot
-        messageList.add(new DataMessage("¿Cuál es el pronóstico del clima?", true)); // Mensaje del usuario
-        messageList.add(new DataMessage("El pronóstico es soleado con una temperatura de 25°C.", false)); // Mensaje del bot
+        // Mensajes de ejemplo predefinidos sobre análisis de datos agrícolas
+        messageList.add(new DataMessage("¡Hola! ¿Necesitas ayuda con tus cultivos?", false)); // Mensaje del bot
+        messageList.add(new DataMessage("Sí, quiero analizar los datos de humedad del suelo.", true)); // Mensaje del usuario
+        messageList.add(new DataMessage("Perfecto. ¿Tienes los registros más recientes?", false)); // Mensaje del bot
+        messageList.add(new DataMessage("Sí, los datos de esta semana ya están cargados.", true)); // Mensaje del usuario
+        messageList.add(new DataMessage("Según los datos, el nivel de humedad está por debajo del óptimo. Se recomienda riego en las próximas 24 horas.", false)); // Mensaje del bot
         chatAdapter.notifyDataSetChanged();
         recyclerView.smoothScrollToPosition(messageList.size() - 1); // Desplazarse al último mensaje
+
     }
 
     @Override
@@ -206,11 +209,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     .replace(R.id.container, new HomeFragment())
                     .commit();
         }
-
-        if (item.getItemId() == R.id.nav_settigs){
+        //sirve para ir al fragmento donde se pueden ver los datos de los sensores.
+        if (item.getItemId() == R.id.nav_tools){
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.container, new FragmentSettings())
+                    .replace(R.id.container, new AnalyticsFragment())
                     .commit();
         }
 
@@ -218,6 +221,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.container, new ChatsFragment())
+                    .commit();
+        }
+
+        if(item.getItemId() == R.id.nav_feed){
+            //Toast.makeText(getApplicationContext(), "Cambiando a la vista de alertas", Toast.LENGTH_SHORT).show();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.container, new FeedFragment())
                     .commit();
         }
 
