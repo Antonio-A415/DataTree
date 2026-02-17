@@ -53,8 +53,7 @@ class ChatsFragment : Fragment(), MainRecyclerViewAdapter.Listener, MainService.
         super.onViewCreated(view, savedInstanceState)
         username = activity?.intent?.getStringExtra("username")
         if (username == null) activity?.finish()
-        changeStatusBarColor()
-
+        (activity as? AppCompatActivity)?.supportActionBar?.title ="Chats"
         init()
     }
 
@@ -113,6 +112,8 @@ class ChatsFragment : Fragment(), MainRecyclerViewAdapter.Listener, MainService.
             }
         }
     }
+
+
 
     override fun onCallReceived(model: DataModel) {
         activity?.runOnUiThread {

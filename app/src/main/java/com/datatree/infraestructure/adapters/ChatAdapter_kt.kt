@@ -77,7 +77,7 @@ class ChatAdapter_kt (private val messages: List<Message>): RecyclerView.Adapter
     }
 
     class ChatViewHolder(view: View): RecyclerView.ViewHolder(view){
-        private val userMessage : TextView = view.findViewById(R.id.userMessage)
+        private val userMessage : TextView = view.findViewById(R.id.txt_user)
         private val botMessage : TextView = view.findViewById(R.id.botMessage)
 
         fun bind(message: Message){

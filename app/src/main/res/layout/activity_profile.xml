@@ -4,389 +4,1167 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/md_theme_surface"
+    android:scrollbars="none"
     tools:context=".activitys.profile.Profile">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="15dp">
+        android:paddingHorizontal="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="24dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Perfil"
-            android:textStyle="bold"
-            android:textSize="30sp"
-            android:fontFamily="@font/poppins_medium"
-            android:layout_gravity="center"
-            android:textColor="@color/black"/>
-
+        <!-- Header del Agricultor con diseño más moderno -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="10dp"
-            android:layout_marginTop="20dp">
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:strokeWidth="0dp"
+            android:layout_marginBottom="16dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="0dp"
-                android:padding="15dp">
+                android:orientation="horizontal"
+                android:padding="20dp"
+                android:gravity="center_vertical">
 
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/idInstitucion"
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/logo"/>
-                <LinearLayout
+                <!-- Contenedor de imagen con mejor styling -->
+                <FrameLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:orientation="horizontal">
+                    android:layout_marginEnd="16dp">
 
+                    <ImageView
+                        android:id="@+id/iv_farmer_photo"
+                        android:layout_width="72dp"
+                        android:layout_height="72dp"
+                        android:background="@drawable/circle_background"
+                        android:contentDescription="Foto del agricultor"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/logo" />
+
+                    <!-- Indicator de estado online -->
+                    <View
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_gravity="bottom|end"
+                        android:layout_marginEnd="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:background="@drawable/circle_background"
+                        android:backgroundTint="@color/green_background" />
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/name"
+                        android:id="@+id/tv_farmer_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Tony Stark"
-                        android:textAlignment="center"
-                        android:textSize="20sp"
-                        android:fontFamily="@font/poppins_medium"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"/>
+                        android:text="Juan Pérez García"
+                        android:textColor="@color/md_theme_onSurface"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/poppins_medium" />
 
-                    <com.airbnb.lottie.LottieAnimationView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_gravity="center"
-                        android:layout_marginBottom="1dp"
-                        android:layout_marginStart="3dp"
-                        app:lottie_rawRes="@raw/verified"
-                        app:lottie_autoPlay="true"
-                        app:lottie_loop="true"/>
+                    <TextView
+                        android:id="@+id/tv_farmer_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="ID: AGR-001"
+                        android:textColor="@color/md_theme_onSurfaceVariant"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/poppins_medium" />
+
+                    <TextView
+                        android:id="@+id/tv_registration_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:text="Registrado: 15/03/2024"
+                        android:textColor="@color/md_theme_onSurfaceVariant"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/poppins_medium" />
 
                 </LinearLayout>
-                <GridLayout
-                    android:id="@+id/gridlayout_contacts"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:useDefaultMargins="true"
-                    android:visibility="gone"
-                    android:rowCount="1"
-                    android:columnCount="3">
 
-                    <com.airbnb.lottie.LottieAnimationView
-                        android:id="@+id/icon_mensaje"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        app:lottie_loop="true"
-                        app:lottie_autoPlay="true"
-                        android:layout_gravity="center_horizontal"
-                        app:lottie_rawRes="@raw/message"/>
+                <!-- Botón de acción rápida -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_quick_action"
+                    style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    app:icon="@drawable/ic_call"
+                    app:iconSize="20dp"
+                    android:contentDescription="Llamar agricultor" />
 
-                    <com.airbnb.lottie.LottieAnimationView
-                        android:id="@+id/call"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_gravity="center_horizontal"
-                        app:lottie_loop="true"
-                        app:lottie_autoPlay="true"
-                        app:lottie_rawRes="@raw/call"/>
-
-                    <com.airbnb.lottie.LottieAnimationView
-                        android:id="@+id/video_call"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_gravity="center_horizontal"
-                        app:lottie_loop="true"
-                        app:lottie_autoPlay="true"
-                        app:lottie_rawRes="@raw/video_call_icon"/>
-
-                </GridLayout>
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
 
+        <!-- Información Básica - Rediseñada -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:cardCornerRadius="10dp">
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="15dp">
-                <RelativeLayout
+                android:padding="20dp">
+
+                <!-- Header de sección mejorado -->
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp">
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="16dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_info_24px"
+                        android:layout_marginEnd="8dp"
+                        app:tint="@color/md_theme_primary" />
+
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/black"
+                        android:layout_weight="1"
                         android:text="Acerca de"
-                        android:fontFamily="@font/poppins_medium"
-                        android:textSize="15sp"
-                        android:layout_alignParentStart="true"
-                        android:textStyle="bold"/>
+                        android:textColor="@color/md_theme_primary"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/poppins_medium" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/descriptionTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:textColor="@color/md_theme_onSurface"
+                    android:text="Somos una organización que busca el bien de las personas mediante prácticas agrícolas sostenibles."
+                    android:fontFamily="@font/poppins_medium"
+                    android:textSize="14sp"
+                    android:lineSpacingExtra="2dp" />
+
+                <!-- División Administrativa con mejor organización -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="12dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/access_time_24"
+                        android:layout_marginEnd="8dp"
+                        app:tint="@color/md_theme_secondary" />
 
                     <TextView
-                        android:id="@+id/descriptionTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="30dp"
-                        android:textColor="@color/black"
-                        android:text="Somos una organización que busca el bien de las personas."
-                        android:fontFamily="@font/poppins_medium"
-                        android:textSize="15sp"
-                        android:layout_alignParentStart="true" />
-                </RelativeLayout>
+                        android:text="DIVISIÓN ADMINISTRATIVA"
+                        android:textColor="@color/md_theme_secondary"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/poppins_medium" />
+
+                </LinearLayout>
+
+                <!-- Grid de información administrativa -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/rounded_background"
+                    android:backgroundTint="@color/md_theme_surfaceVariant"
+                    android:padding="16dp">
+
+                    <!-- Fila 1: Estado y Municipio -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="12dp">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_marginEnd="8dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Estado"
+                                android:textColor="@color/md_theme_onSurfaceVariant"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/poppins_medium" />
+
+                            <TextView
+                                android:id="@+id/tv_state"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="Yucatán"
+                                android:textColor="@color/md_theme_onSurface"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/poppins_medium" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_marginStart="8dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Municipio"
+                                android:textColor="@color/md_theme_onSurfaceVariant"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/poppins_medium" />
+
+                            <TextView
+                                android:id="@+id/tv_municipality"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="Tecax"
+                                android:textColor="@color/md_theme_onSurface"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/poppins_medium" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!-- Fila 2: Localidad y Código Postal -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_marginEnd="8dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Localidad"
+                                android:textColor="@color/md_theme_onSurfaceVariant"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/poppins_medium" />
+
+                            <TextView
+                                android:id="@+id/tv_locality"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="Ejido San Antonio"
+                                android:textColor="@color/md_theme_onSurface"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/poppins_medium" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_marginStart="8dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Código Postal"
+                                android:textColor="@color/md_theme_onSurfaceVariant"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/poppins_medium" />
+
+                            <TextView
+                                android:id="@+id/tv_postal_code"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="97633"
+                                android:textColor="@color/md_theme_onSurface"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/poppins_medium" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
 
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
+
+        <!-- Ubicación Geográfica - Rediseñada -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:cardCornerRadius="10dp">
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="15dp">
+                android:padding="20dp">
 
-                <RelativeLayout
+                <!-- Header mejorado -->
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp">
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="16dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/location_on_24"
+                        android:layout_marginEnd="8dp"
+                        app:tint="@color/green_background" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="UBICACIÓN GEOGRÁFICA"
+                        android:textColor="@color/green_background"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/poppins_medium" />
+
+                    <!-- Botón para abrir mapa -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_open_map"
+                        style="@style/Widget.Material3.Button.TextButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:text="Ver Mapa"
+                        android:textSize="12sp"
+                        app:icon="@drawable/ic_end_call"
+                        app:iconSize="16dp" />
+
+                </LinearLayout>
+
+                <!-- Coordenadas en formato más visual -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/rounded_background"
+                    android:backgroundTint="@color/md_theme_surfaceVariant"
+                    android:padding="16dp"
+                    android:layout_marginBottom="16dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_marginEnd="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Latitud"
+                            android:textColor="@color/md_theme_onSurfaceVariant"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/poppins_medium" />
+
+                        <TextView
+                            android:id="@+id/tv_latitude"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="20.9674° N"
+                            android:textColor="@color/md_theme_onSurface"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/poppins_medium" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/md_theme_outline" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_marginStart="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Longitud"
+                            android:textColor="@color/md_theme_onSurfaceVariant"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/poppins_medium" />
+
+                        <TextView
+                            android:id="@+id/tv_longitude"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="-89.5926° W"
+                            android:textColor="@color/md_theme_onSurface"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/poppins_medium" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- Dirección completa -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dirección"
+                    android:textColor="@color/md_theme_onSurfaceVariant"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/poppins_medium" />
+
+                <TextView
+                    android:id="@+id/tv_full_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Km 15 Carretera Tecax-Akil, Ejido San Antonio, Tecax, Yucatán, México"
+                    android:textColor="@color/md_theme_onSurface"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:lineSpacingExtra="2dp" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Información del Predio - Rediseñada -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:strokeWidth="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <!-- Header mejorado -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="16dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_info_24px"
+                        android:layout_marginEnd="8dp"
+                        app:tint="@color/accent_orange" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/black"
+                        android:text="INFORMACIÓN DEL PREDIO"
+                        android:textColor="@color/accent_orange"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/poppins_medium" />
+
+                </LinearLayout>
+
+                <!-- Grid de información del predio -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/rounded_background"
+                    android:backgroundTint="@color/md_theme_surfaceVariant"
+                    android:padding="16dp">
+
+                    <!-- Superficie y Altitud -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="12dp">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_marginEnd="8dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Superficie"
+                                android:textColor="@color/md_theme_onSurfaceVariant"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/poppins_medium" />
+
+                            <TextView
+                                android:id="@+id/tv_land_area"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="12.5 hectáreas"
+                                android:textColor="@color/md_theme_onSurface"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/poppins_medium" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_marginStart="8dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Altitud"
+                                android:textColor="@color/md_theme_onSurfaceVariant"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/poppins_medium" />
+
+                            <TextView
+                                android:id="@+id/tv_altitude"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="45 msnm"
+                                android:textColor="@color/md_theme_onSurface"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/poppins_medium" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!-- Tipo de cultivo -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tipo de cultivo"
+                            android:textColor="@color/md_theme_onSurfaceVariant"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/poppins_medium" />
+
+                        <TextView
+                            android:id="@+id/tv_crop_type"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Maíz, Frijol"
+                            android:textColor="@color/md_theme_onSurface"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/poppins_medium" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Datos del Agricultor - Consolidada y mejorada -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:strokeWidth="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <!-- Header -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="16dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_camera_black_24dp"
+                        android:layout_marginEnd="8dp"
+                        app:tint="@color/md_theme_primary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:text="Datos del Agricultor"
-                        android:fontFamily="@font/poppins_medium"
-                        android:textSize="18sp"
-                        android:layout_alignParentStart="true"
-                        android:textStyle="bold"/>
-                </RelativeLayout>
+                        android:textColor="@color/md_theme_primary"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/poppins_medium" />
 
-                <!-- Tipo de Cultivo -->
-                <RelativeLayout
+                </LinearLayout>
+
+                <!-- Lista de datos organizada -->
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginTop="15dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:text="Tipo de Cultivo"
-                        android:fontFamily="@font/poppins_medium"
-                        android:textSize="15sp"
-                        android:layout_alignParentStart="true"
-                        android:textStyle="bold"/>
-                    <TextView
-                        android:id="@+id/cropType"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:text="Maíz"
-                        android:fontFamily="@font/poppins_medium"
-                        android:textSize="15sp"
-                        android:layout_alignParentEnd="true"
-                        android:textStyle="bold"/>
-                </RelativeLayout>
+                    android:orientation="vertical"
+                    android:divider="@drawable/dot_separator"
+                    android:showDividers="middle">
 
-                <!-- Extensión del Terreno -->
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp">
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <!-- Tipo de Cultivo -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:text="Extensión del Terreno"
-                        android:fontFamily="@font/poppins_medium"
-                        android:textSize="15sp"
-                        android:layout_alignParentStart="true"
-                        android:textStyle="bold"/>
-                    <TextView
-                        android:id="@+id/farmSize"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:text="10 Hectáreas"
-                        android:fontFamily="@font/poppins_medium"
-                        android:textSize="15sp"
-                        android:layout_alignParentEnd="true"
-                        android:textStyle="bold"/>
-                </RelativeLayout>
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingVertical="12dp">
 
-                <!-- Sistema de Riego -->
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:text="Sistema de Riego"
-                        android:fontFamily="@font/poppins_medium"
-                        android:textSize="15sp"
-                        android:layout_alignParentStart="true"
-                        android:textStyle="bold"/>
-                    <TextView
-                        android:id="@+id/irrigationType"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:text="Goteo"
-                        android:fontFamily="@font/poppins_medium"
-                        android:textSize="15sp"
-                        android:layout_alignParentEnd="true"
-                        android:textStyle="bold"/>
-                </RelativeLayout>
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_info_24px"
+                            android:layout_marginEnd="12dp"
+                            app:tint="@color/md_theme_onSurfaceVariant" />
 
-                <!-- Ubicación -->
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:text="Ubicación"
-                        android:fontFamily="@font/poppins_medium"
-                        android:textSize="15sp"
-                        android:layout_alignParentStart="true"
-                        android:textStyle="bold"/>
-                    <TextView
-                        android:id="@+id/addressTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="#6E6C6C"
-                        android:text="Rancho La Esperanza, Yucatán"
-                        android:fontFamily="@font/poppins_medium"
-                        android:textSize="15sp"
-                        android:layout_alignParentEnd="true"
-                        android:textStyle="bold"/>
-                </RelativeLayout>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
 
-                <!-- Teléfono -->
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:text="Número móvil"
-                        android:fontFamily="@font/poppins_medium"
-                        android:textSize="15sp"
-                        android:layout_alignParentStart="true"
-                        android:textStyle="bold"/>
-                    <TextView
-                        android:id="@+id/phoneTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="#6E6C6C"
-                        android:text="+52 5764588372"
-                        android:fontFamily="@font/poppins_medium"
-                        android:textSize="15sp"
-                        android:layout_alignParentEnd="true"
-                        android:textStyle="bold"/>
-                </RelativeLayout>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Tipo de Cultivo"
+                                android:textColor="@color/md_theme_onSurfaceVariant"
+                                android:textSize="12sp"
+                                android:fontFamily="@font/poppins_medium" />
 
-                <!-- Email -->
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp">
-                    <TextView
-                        android:layout_width="wrap_content"
+                            <TextView
+                                android:id="@+id/cropType"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="Maíz"
+                                android:textColor="@color/md_theme_onSurface"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/poppins_medium" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!-- Extensión del Terreno -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:text="Email"
-                        android:fontFamily="@font/poppins_medium"
-                        android:textSize="15sp"
-                        android:layout_alignParentStart="true"
-                        android:textStyle="bold"/>
-                    <TextView
-                        android:id="@+id/emailTextView"
-                        android:layout_width="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingVertical="12dp">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_info_24px"
+                            android:layout_marginEnd="12dp"
+                            app:tint="@color/md_theme_onSurfaceVariant" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Extensión del Terreno"
+                                android:textColor="@color/md_theme_onSurfaceVariant"
+                                android:textSize="12sp"
+                                android:fontFamily="@font/poppins_medium" />
+
+                            <TextView
+                                android:id="@+id/farmSize"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="10 Hectáreas"
+                                android:textColor="@color/md_theme_onSurface"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/poppins_medium" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!-- Sistema de Riego -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="#6E6C6C"
-                        android:text="agricultor@campo.mx"
-                        android:fontFamily="@font/poppins_medium"
-                        android:textSize="15sp"
-                        android:layout_alignParentEnd="true"
-                        android:textStyle="bold"/>
-                </RelativeLayout>
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingVertical="12dp">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_info_24px"
+                            android:layout_marginEnd="12dp"
+                            app:tint="@color/md_theme_onSurfaceVariant" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Sistema de Riego"
+                                android:textColor="@color/md_theme_onSurfaceVariant"
+                                android:textSize="12sp"
+                                android:fontFamily="@font/poppins_medium" />
+
+                            <TextView
+                                android:id="@+id/irrigationType"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="Goteo"
+                                android:textColor="@color/md_theme_onSurface"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/poppins_medium" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!-- Ubicación -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingVertical="12dp">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_info_24px"
+                            android:layout_marginEnd="12dp"
+                            app:tint="@color/md_theme_onSurfaceVariant" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Ubicación"
+                                android:textColor="@color/md_theme_onSurfaceVariant"
+                                android:textSize="12sp"
+                                android:fontFamily="@font/poppins_medium" />
+
+                            <TextView
+                                android:id="@+id/addressTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="Rancho La Esperanza, Yucatán"
+                                android:textColor="@color/md_theme_onSurface"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/poppins_medium" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
 
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
 
-
+        <!-- Información de Contacto -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="30dp"
-            app:cardCornerRadius="10dp">
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:strokeWidth="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="15dp">
+                android:padding="20dp">
 
-                <RelativeLayout
+                <!-- Header -->
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp">
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="16dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/dot_separator"
+                        android:layout_marginEnd="8dp"
+                        app:tint="@color/md_theme_tertiary" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:text="Redes sociales"
-                        android:fontFamily="@font/poppins_medium"
-                        android:textSize="20sp"
-                        android:layout_alignParentStart="true"
-                        android:textStyle="bold"/>
-                </RelativeLayout>
+                        android:text="Información de Contacto"
+                        android:textColor="@color/md_theme_tertiary"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/poppins_medium" />
 
+                </LinearLayout>
+
+                <!-- Lista de contactos con acciones -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:divider="@drawable/dot_separator"
+                    android:showDividers="middle">
+
+                    <!-- Teléfono -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingVertical="12dp"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/dot_separator"
+                            android:layout_marginEnd="12dp"
+                            app:tint="@color/green_background" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Número móvil"
+                                android:textColor="@color/md_theme_onSurfaceVariant"
+                                android:textSize="12sp"
+                                android:fontFamily="@font/poppins_medium" />
+
+                            <TextView
+                                android:id="@+id/phoneTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="+52 5764588372"
+                                android:textColor="@color/md_theme_onSurface"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/poppins_medium" />
+
+                        </LinearLayout>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_call"
+                            style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            app:icon="@drawable/ic_call"
+                            app:iconSize="18dp"
+                            android:contentDescription="Llamar" />
+
+                    </LinearLayout>
+
+                    <!-- Email -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingVertical="12dp"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/dot_separator"
+                            android:layout_marginEnd="12dp"
+                            app:tint="@color/md_theme_primary" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Email"
+                                android:textColor="@color/md_theme_onSurfaceVariant"
+                                android:textSize="12sp"
+                                android:fontFamily="@font/poppins_medium" />
+
+                            <TextView
+                                android:id="@+id/emailTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="agricultor@campo.mx"
+                                android:textColor="@color/md_theme_onSurface"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/poppins_medium" />
+
+                        </LinearLayout>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_email"
+                            style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            app:icon="@drawable/dot_separator"
+                            app:iconSize="18dp"
+                            android:contentDescription="Enviar email" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
 
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
 
+        <!-- Redes Sociales - Mejorada -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:strokeWidth="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <!-- Header -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="16dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/dot_separator"
+                        android:layout_marginEnd="8dp"
+                        app:tint="@color/md_theme_secondary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Redes Sociales"
+                        android:textColor="@color/md_theme_secondary"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/poppins_medium" />
+
+                </LinearLayout>
+
+                <!-- Botones de redes sociales -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginTop="8dp">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_facebook"
+                        style="@style/Widget.Material3.Button.IconButton.Filled"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginEnd="12dp"
+                        app:icon="@drawable/dot_separator"
+                        app:iconSize="24dp"
+                        app:backgroundTint="#1877f2"
+                        android:contentDescription="Facebook" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_whatsapp"
+                        style="@style/Widget.Material3.Button.IconButton.Filled"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginEnd="12dp"
+                        app:icon="@drawable/dot_separator"
+                        app:iconSize="24dp"
+                        app:backgroundTint="#25d366"
+                        android:contentDescription="WhatsApp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_instagram"
+                        style="@style/Widget.Material3.Button.IconButton.Filled"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        app:icon="@drawable/dot_separator"
+                        app:iconSize="24dp"
+                        app:backgroundTint="#E4405F"
+                        android:contentDescription="Instagram" />
+
+                </LinearLayout>
+
+                <!-- Mensaje de estado -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="Conecta con el agricultor a través de sus redes sociales"
+                    android:textColor="@color/md_theme_onSurfaceVariant"
+                    android:textSize="12sp"
+                    android:gravity="center"
+                    android:fontFamily="@font/poppins_medium" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Botones de acción principales -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_edit_profile"
+                style="@style/Widget.Material3.Button.IconButton.Filled"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:text="Editar Perfil"
+                app:iconSize="18dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_share_profile"
+                style="@style/Widget.Material3.Button.IconButton.Filled"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:text="Compartir"
+                app:icon="@drawable/dot_separator"
+                app:iconSize="18dp" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

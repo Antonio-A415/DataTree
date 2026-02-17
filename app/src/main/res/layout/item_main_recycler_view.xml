@@ -1,100 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardUser"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
-    android:layout_margin="10dp"
-    android:paddingTop="15dp">
+    android:layout_margin="5dp"
+    android:backgroundTint="@color/md_theme_surface"
+    app:cardCornerRadius="18dp"
+    app:cardElevation="6dp"
+    app:strokeWidth="1dp">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/idInstitucion"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/logo"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
 
-    <TextView
-        android:id="@+id/usernameTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:fontFamily="@font/poppins_medium"
-        android:text="Tony Stark"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/idInstitucion"
-        app:layout_constraintTop_toTopOf="@id/idInstitucion"
-        app:layout_constraintEnd_toStartOf="@id/lottieVerified" />
+        <!-- Imagen redondeada -->
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/idInstitucion"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/agricultor"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/lottieVerified"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        app:lottie_loop="true"
-        app:lottie_autoPlay="true"
-        app:lottie_rawRes="@raw/verified"
-        app:layout_constraintStart_toEndOf="@id/usernameTv"
-        app:layout_constraintTop_toTopOf="@id/usernameTv" />
+        <!-- Nombre + Verificado -->
+        <TextView
+            android:id="@+id/usernameTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:paddingStart="5dp"
+            android:maxLines="1"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Fernando Quetzal"
+            android:textColor="@color/md_theme_onSurface"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@id/idInstitucion"
+            app:layout_constraintTop_toTopOf="@id/idInstitucion"
+            app:layout_constraintEnd_toStartOf="@id/lottieVerified"
+            app:layout_constraintHorizontal_bias="0" />
 
-    <TextView
-        android:id="@+id/statusTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_medium"
-        android:text="En línea"
-        android:textColor="@color/black"
-        android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@id/idInstitucion"
-        app:layout_constraintTop_toBottomOf="@id/usernameTv" />
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieVerified"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            app:lottie_loop="true"
+            app:lottie_autoPlay="true"
+            app:lottie_rawRes="@raw/verified"
+            app:layout_constraintStart_toEndOf="@id/usernameTv"
+            app:layout_constraintTop_toTopOf="@id/usernameTv"
+            app:layout_constraintBottom_toBottomOf="@id/usernameTv"
+            android:layout_marginStart="4dp"/>
 
-    <TextView
-        android:id="@+id/tvDireccion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_medium"
-        android:text="Cerca de tu zona agrícola"
-        android:textColor="#6E6C6C"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@id/statusTv"
-        app:layout_constraintTop_toBottomOf="@id/statusTv" />
+        <!-- Estado -->
+        <TextView
+            android:id="@+id/statusTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:text="En línea"
+            android:paddingStart="5dp"
+            android:textColor="@color/md_theme_onSurface"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="@id/usernameTv"
+            app:layout_constraintTop_toBottomOf="@id/usernameTv"
+            android:layout_marginTop="4dp"/>
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/btnMessage"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="66dp"
-        android:layout_marginBottom="15dp"
-        android:paddingTop="10dp"
-        android:visibility="gone"
-        app:lottie_autoPlay="true"
-        app:lottie_rawRes="@raw/message"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/idInstitucion" />
+        <!-- Dirección -->
+        <TextView
+            android:id="@+id/tvDireccion"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Cerca de tu zona agrícola"
+            android:paddingStart="5dp"
+            android:textColor="@color/accent_green_"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@id/statusTv"
+            app:layout_constraintTop_toBottomOf="@id/statusTv"
+            app:layout_constraintEnd_toStartOf="@id/audioCallBtn"
+            android:layout_marginTop="2dp"/>
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/audioCallBtn"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/call"
-        app:layout_constraintStart_toEndOf="@id/btnMessage"
-        app:layout_constraintTop_toBottomOf="@id/tvDireccion" />
+        <!-- Botones de acción alineados a la derecha -->
+        <ImageView
+            android:id="@+id/audioCallBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/call_24px"
+            app:layout_constraintEnd_toStartOf="@id/videoCallBtn"
+            app:layout_constraintTop_toTopOf="@id/idInstitucion"
+            app:layout_constraintBottom_toBottomOf="@id/idInstitucion"
+            android:layout_marginEnd="8dp"/>
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/videoCallBtn"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/video_call_icon"
-        app:layout_constraintStart_toEndOf="@id/audioCallBtn"
-        app:layout_constraintTop_toTopOf="@id/audioCallBtn" />
+        <ImageView
+            android:id="@+id/videoCallBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/video_chat_24px"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/audioCallBtn"
+            app:layout_constraintBottom_toBottomOf="@id/audioCallBtn" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

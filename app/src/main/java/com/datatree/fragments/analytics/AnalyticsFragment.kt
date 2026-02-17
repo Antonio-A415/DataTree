@@ -37,7 +37,30 @@ import com.datatree.infraestructure.dataclass.esp32.SensorData
 import kotlin.random.Random
 
 
+import com.datatree.infraestructure.dataclass.npk.NPKData
+import com.datatree.infraestructure.dataclass.npk.NPKEstimator
+import com.datatree.infraestructure.dataclass.npk.NPKEstimationInput
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import com.google.android.material.card.MaterialCardView
+
+
 class AnalyticsFragment : Fragment(), Esp32Listener {
+
+    // UI Components para NPK
+    private lateinit var cardNpkSection: MaterialCardView
+    private lateinit var tvNpkStatus: TextView
+    private lateinit var tvNitrogenValue: TextView
+    private lateinit var tvPhosphorusValue: TextView
+    private lateinit var tvPotassiumValue: TextView
+    private lateinit var tvNpkRecommendation: TextView
+    private lateinit var spinnerSoilType: Spinner
+    private lateinit var spinnerPreviousCrop: Spinner
+
+    // NPK data
+    private var currentNPK: NPKData? = null
+    private var isProcessingNPK = false
+
     // UI Components
     private lateinit var tvTemperature: TextView
     private lateinit var tvTemperatureStatus: TextView
@@ -97,6 +120,7 @@ class AnalyticsFragment : Fragment(), Esp32Listener {
     }
 
 
+
     private fun initializeViews(view: View) {
         tvTemperature = view.findViewById(R.id.tv_temperature_value)
         tvTemperatureStatus = view.findViewById(R.id.tv_temperature_status)
@@ -112,6 +136,95 @@ class AnalyticsFragment : Fragment(), Esp32Listener {
         btnStartMonitoring = view.findViewById(R.id.btn_start_monitoring)
         btnStopMonitoring = view.findViewById(R.id.btn_stop_monitoring)
         btnRefresh = view.findViewById(R.id.btn_refresh)
+
+
+
+        // NPK Section
+        cardNpkSection = view.findViewById(R.id.card_npk_section)
+        tvNpkStatus = view.findViewById(R.id.tv_npk_status)
+        tvNitrogenValue = view.findViewById(R.id.tv_nitrogen_value)
+        tvPhosphorusValue = view.findViewById(R.id.tv_phosphorus_value)
+        tvPotassiumValue = view.findViewById(R.id.tv_potassium_value)
+        tvNpkRecommendation = view.findViewById(R.id.tv_npk_recommendation)
+        spinnerSoilType = view.findViewById(R.id.spinner_soil_type)
+        spinnerPreviousCrop = view.findViewById(R.id.spinner_previous_crop)
+
+        setupSpinners()
+    }
+
+    // AGREGAR ESTA NUEVA FUNCIÓN
+    private fun setupSpinners() {
+        // Spinner de tipo de suelo
+        val soilTypes = arrayOf("Arcilloso", "Arenoso", "Limoso", "Franco")
+        val soilAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, soilTypes)
+        soilAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerSoilType.adapter = soilAdapter
+        spinnerSoilType.setSelection(3) // Franco por defecto
+
+        // Spinner de cultivo antecesor (por ahora solo frijol)
+        val crops = arrayOf("Frijol")
+        val cropAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, crops)
+        cropAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerPreviousCrop.adapter = cropAdapter
+    }
+
+    // AGREGAR ESTA NUEVA FUNCIÓN
+    private fun updateNPKProcessingStatus() {
+        if (isProcessingNPK) {
+            tvNpkStatus.text = "Procesando datos..."
+            tvNpkStatus.setBackgroundResource(R.drawable.status_background_warning)
+
+            // Ocultar valores mientras procesa
+            tvNitrogenValue.text = "---"
+            tvPhosphorusValue.text = "---"
+            tvPotassiumValue.text = "---"
+            tvNpkRecommendation.text = "Esperando lecturas de sensores para calcular NPK..."
+
+            // Mostrar indicador de carga en el botón
+            btnStartMonitoring.isEnabled = false
+            btnStartMonitoring.text = "Procesando..."
+        } else {
+            btnStartMonitoring.isEnabled = true
+            btnStartMonitoring.text = "Iniciar"
+        }
+    }
+
+    // AGREGAR ESTA NUEVA FUNCIÓN
+    private fun processNPKEstimation() {
+        if (!isProcessingNPK) return
+
+        // Simular un pequeño delay para el procesamiento
+        handler.postDelayed({
+            val soilType = spinnerSoilType.selectedItem.toString()
+            val previousCrop = spinnerPreviousCrop.selectedItem.toString()
+
+            val input = NPKEstimationInput(
+                temperature = currentTemperature,
+                airHumidity = currentAirHumidity,
+                soilHumidity = currentSoilHumidity,
+                previousCrop = previousCrop,
+                soilType = soilType
+            )
+
+            currentNPK = NPKEstimator.estimateNPK(input)
+            isProcessingNPK = false
+
+            updateNPKUI()
+            updateNPKProcessingStatus()
+        }, 1500) // 1.5 segundos de delay
+    }
+
+    // AGREGAR ESTA NUEVA FUNCIÓN
+    private fun updateNPKUI() {
+        currentNPK?.let { npk ->
+            tvNpkStatus.text = "Estimación completada"
+            tvNpkStatus.setBackgroundResource(R.drawable.status_background_good)
+
+            tvNitrogenValue.text = String.format("%.1f kg/ha", npk.nitrogen)
+            tvPhosphorusValue.text = String.format("%.1f kg/ha", npk.phosphorus)
+            tvPotassiumValue.text = String.format("%.1f kg/ha", npk.potassium)
+            tvNpkRecommendation.text = npk.recommendation
+        }
     }
     private fun setupListeners_data_simulation() {
         btnStartMonitoring.setOnClickListener { startMonitoring() }
@@ -119,7 +232,7 @@ class AnalyticsFragment : Fragment(), Esp32Listener {
         btnRefresh.setOnClickListener { refreshData() }
     }
 
-    private fun setupListeners() {
+    private fun setupListeners_() {
         btnStartMonitoring.setOnClickListener {
             esp32Manager.requestData() // envia "DATA\n"
         }
@@ -130,6 +243,29 @@ class AnalyticsFragment : Fragment(), Esp32Listener {
 
         btnRefresh.setOnClickListener {
             esp32Manager.requestData()
+        }
+    }
+
+    private fun setupListeners() {
+        btnStartMonitoring.setOnClickListener {
+            if (!isProcessingNPK) {
+                isProcessingNPK = true
+                updateNPKProcessingStatus()
+                esp32Manager.requestData() // envia "DATA\n"
+            }
+        }
+
+        btnStopMonitoring.setOnClickListener {
+            esp32Manager.stopMonitoring()
+            isProcessingNPK = false
+        }
+
+        btnRefresh.setOnClickListener {
+            if (!isProcessingNPK) {
+                isProcessingNPK = true
+                updateNPKProcessingStatus()
+                esp32Manager.requestData()
+            }
         }
     }
 
@@ -211,6 +347,11 @@ class AnalyticsFragment : Fragment(), Esp32Listener {
         updateTemperatureStatus()
         updateHumidityStatus()
         updateSoilStatus()
+
+        // Si hay datos NPK actualizados, mostrarlos
+        if (!isProcessingNPK && currentNPK != null) {
+            updateNPKUI()
+        }
     }
 
     private fun updateTemperatureStatus() {
@@ -265,6 +406,8 @@ class AnalyticsFragment : Fragment(), Esp32Listener {
     private lateinit var esp32Manager: Esp32Manager
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        (activity as? AppCompatActivity)?.supportActionBar?.title ="Monitor"
         esp32Manager = Esp32Manager(requireContext())
         esp32Manager.setListener(this)
 
@@ -314,7 +457,13 @@ class AnalyticsFragment : Fragment(), Esp32Listener {
         failedReadings = data.failedReadings
 
         updateUI()
+
+        // Procesar NPK después de recibir datos
+        if (isProcessingNPK) {
+            processNPKEstimation()
+        }
     }
+
 
     override fun onConnectionStatusChanged(isConnected: Boolean) {
         tvConnectionStatus.text = if (isConnected) "Sistemas conectados" else "Sin conexión"

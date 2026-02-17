@@ -10,8 +10,6 @@ import com.datatree.databinding.ActivityLoginBinding
 import com.datatree.core.repositories.MainRepository
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-import com.datatree.R
-
 
 @AndroidEntryPoint
 class Login : AppCompatActivity() {
@@ -42,11 +40,11 @@ class Login : AppCompatActivity() {
                 mainRepository.login(
                     etName.text.toString(), etPassword.text.toString()
                 ){ isDone, reason ->
-                    makeToast("Ejecutando la función lambda")
+                    //makeToast("Ejecutando la función lambda")
                     if (!isDone){
                         Toast.makeText(this@Login, reason, Toast.LENGTH_SHORT).show()
                     }else{
-                        makeToast("Iniciando la siguiente actividad.")
+                        //makeToast("Iniciando la siguiente actividad.")
                         //start moving to our main activity
                        /* Intent(this@Login, HomeView::class.java).apply {
                             //putExtra("username", etName.text.toString())

@@ -1,6 +1,6 @@
 package com.datatree.infraestructure.dataclass
 
-import android.graphics.Region
+
 import java.util.Date
 
 data class AlertPost(

@@ -24,7 +24,7 @@
         android:layout_height="40dp"
         android:orientation="horizontal"
         android:gravity="center"
-        android:background="#40000000"
+        android:background="@color/md_theme_onPrimaryFixed"
         app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/titleLayout">
         <TextView
@@ -53,52 +53,58 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <LinearLayout
+    <com.google.android.material.circularreveal.cardview.CircularRevealCardView
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="horizontal"
         android:gravity="center"
-        android:background="#40000000"
+        android:backgroundTint="@color/md_theme_onPrimaryFixed"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="10dp"
         android:id="@+id/controlPanelLayout">
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/endCallButton"
+                android:background="@android:color/transparent"
+                android:src="@drawable/end_call"/>
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/toggleMicrophoneButton"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_mic_off"/>
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/toggleCameraButton"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_camera_off"/>
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/switchCameraButton"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_switch_camera"/>
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/toggleAudioDevice"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_ear"/>
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:id="@+id/screenShareButton"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_screen_share"/>
+        </LinearLayout>
 
 
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:id="@+id/endCallButton"
-            android:background="@android:color/transparent"
-            android:src="@drawable/end_call"/>
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:id="@+id/toggleMicrophoneButton"
-            android:background="@android:color/transparent"
-            android:src="@drawable/ic_mic_off"/>
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:id="@+id/toggleCameraButton"
-            android:background="@android:color/transparent"
-            android:src="@drawable/ic_camera_off"/>
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:id="@+id/switchCameraButton"
-            android:background="@android:color/transparent"
-            android:src="@drawable/ic_switch_camera"/>
-
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:id="@+id/toggleAudioDevice"
-            android:background="@android:color/transparent"
-            android:src="@drawable/ic_ear"/>
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:id="@+id/screenShareButton"
-            android:background="@android:color/transparent"
-            android:src="@drawable/ic_screen_share"/>
-    </LinearLayout>
+    </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

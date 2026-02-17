@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/md_theme_surface">
@@ -28,7 +27,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
+                android:padding="10dp"
                 android:background="@color/md_theme_surface">
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -53,6 +52,7 @@
                         android:text="Antonio"
                         android:fontFamily="@font/poppins_medium"
                         android:textColor="@color/md_theme_onSurface"
+                        android:padding="5dp"
                         android:textSize="16sp"/>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -63,13 +63,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:layout_weight="1">
+                            android:layout_weight="1"
+                            android:layout_gravity="center_horizontal">
 
                             <TextView
                                 android:id="@+id/txt_region"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Yucatán"
+                                android:gravity="center"
                                 android:drawableStart="@drawable/location_on_24"
                                 android:drawablePadding="8dp"
                                 android:fontFamily="@font/poppins_medium"
@@ -87,7 +89,7 @@
                                 android:id="@+id/txt_time"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1"
+                                android:gravity="center"
                                 android:text="14:32"
                                 android:drawableStart="@drawable/access_time_24"
                                 android:drawablePadding="8dp"
@@ -98,22 +100,16 @@
                         </LinearLayout>
 
 
-                        <com.google.android.material.button.MaterialButton
+                        <com.google.android.material.textview.MaterialTextView
                             android:id="@+id/btn_category"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:backgroundTint="@color/green_low"
                             android:fontFamily="@font/poppins_medium"
                             android:text="Hortalizas"
                             android:textAlignment="center"
                             android:textColor="@color/white"
                             android:textSize="14sp"
-                            app:icon="@drawable/eco_24"
-                            app:iconGravity="textStart"
-                            app:iconPadding="5dp"
-                            app:iconTint="@color/white"
-                            style="@style/Widget.Material3.Button.IconButton.Filled"/>
+                            app:iconTint="@color/white" />
 
 
 
@@ -127,6 +123,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:text="Exceso de humedad"
+                android:textColor="@color/green_more_strong"
                 style="@style/TextAppearance.Material3.TitleMedium"/>
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
@@ -161,6 +158,11 @@
                     android:text="Geoinformación"/>
             </com.google.android.material.tabs.TabLayout>
 
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/container_alerts_item">
+            </FrameLayout>
             <!-- Content Section -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
@@ -170,155 +172,162 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:background="@color/md_theme_surface"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:id="@+id/txt_description"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Se muestra el crecimiento del chile habanero durante la etapa vegetativa. El riego fue controlado con sensores de humedad del suelo."
-                        android:textSize="14sp"
-                        android:textColor="@color/md_theme_onSurface"
-                        android:fontFamily="@font/poppins_medium"
-                        android:lineSpacingExtra="4dp"
-                        style="@style/TextAppearance.Material3.TitleMedium"/>
-
-                    <!-- Alert Indicators -->
+                    android:orientation="vertical">
                     <LinearLayout
-                        android:id="@+id/layout_indicators"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="16dp"
-                        android:animateLayoutChanges="true">
+                        android:visibility="gone"
+                        android:orientation="vertical"
+                        android:background="@color/md_theme_surface"
+                        android:padding="16dp">
 
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="0dp"
-                            android:layout_height="80dp"
-                            android:layout_weight="1"
-                            android:layout_marginEnd="8dp"
-                            app:cardCornerRadius="12dp"
-                            app:cardElevation="5dp"
-                            app:cardBackgroundColor="@color/md_theme_surfaceVariant"
-                            style="@style/Widget.Material3.CardView.Elevated">
+                        <TextView
+                            android:id="@+id/txt_description"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Se muestra el crecimiento del chile habanero durante la etapa vegetativa. El riego fue controlado con sensores de humedad del suelo."
+                            android:textSize="14sp"
+                            android:textColor="@color/md_theme_onSurface"
+                            android:fontFamily="@font/poppins_medium"
+                            android:lineSpacingExtra="4dp"
+                            style="@style/TextAppearance.Material3.TitleMedium"/>
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="vertical"
-                                android:gravity="center"
-                                android:padding="8dp">
+                        <!-- Alert Indicators -->
+                        <LinearLayout
+                            android:id="@+id/layout_indicators"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="16dp"
+                            android:animateLayoutChanges="true">
 
-                                <ImageView
-                                    android:layout_width="24dp"
-                                    android:layout_height="24dp"
-                                    android:src="@drawable/humidity_percentage_24"
-                                    app:tint="@color/indicator_humidity"/>
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="0dp"
+                                android:layout_height="80dp"
+                                android:layout_weight="1"
+                                android:layout_marginEnd="8dp"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="5dp"
+                                app:cardBackgroundColor="@color/md_theme_surfaceVariant"
+                                style="@style/Widget.Material3.CardView.Elevated">
 
-                                <TextView
-                                    android:id="@+id/txt_humidity"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="78%"
-                                    android:textSize="16sp"
-                                    android:textStyle="bold"
-                                    android:textColor="@color/indicator_humidity"/>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical"
+                                    android:gravity="center"
+                                    android:padding="8dp">
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Humedad"
-                                    android:textSize="12sp"
-                                    android:textColor="@color/md_theme_onSurface"
-                                    style="@style/TextAppearance.Material3.TitleMedium"/>
-                            </LinearLayout>
-                        </androidx.cardview.widget.CardView>
+                                    <ImageView
+                                        android:layout_width="24dp"
+                                        android:layout_height="24dp"
+                                        android:src="@drawable/humidity_percentage_24"
+                                        app:tint="@color/indicator_humidity"/>
 
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="0dp"
-                            android:layout_height="80dp"
-                            android:layout_weight="1"
-                            android:layout_marginHorizontal="4dp"
-                            app:cardCornerRadius="12dp"
-                            app:cardElevation="5dp"
-                            app:cardBackgroundColor="@color/md_theme_surfaceVariant"
-                            style="@style/Widget.Material3.CardView.Elevated">
+                                    <TextView
+                                        android:id="@+id/txt_humidity"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="78%"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold"
+                                        android:textColor="@color/indicator_humidity"/>
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="vertical"
-                                android:gravity="center"
-                                android:padding="8dp">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Humedad"
+                                        android:textSize="12sp"
+                                        android:textColor="@color/md_theme_onSurface"
+                                        style="@style/TextAppearance.Material3.TitleMedium"/>
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
 
-                                <ImageView
-                                    android:layout_width="24dp"
-                                    android:layout_height="24dp"
-                                    android:src="@drawable/thermostat_24"
-                                    app:tint="@color/indicator_temp"/>
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="0dp"
+                                android:layout_height="80dp"
+                                android:layout_weight="1"
+                                android:layout_marginHorizontal="4dp"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="5dp"
+                                app:cardBackgroundColor="@color/md_theme_surfaceVariant"
+                                style="@style/Widget.Material3.CardView.Elevated">
 
-                                <TextView
-                                    android:id="@+id/txt_temperature"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="32°C"
-                                    android:textSize="16sp"
-                                    android:textStyle="bold"
-                                    android:textColor="@color/indicator_temp"/>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical"
+                                    android:gravity="center"
+                                    android:padding="8dp">
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Temperatura"
-                                    android:textSize="12sp"
-                                    android:textColor="@color/md_theme_onSurface"
-                                    style="@style/TextAppearance.Material3.TitleMedium"/>
-                            </LinearLayout>
-                        </androidx.cardview.widget.CardView>
+                                    <ImageView
+                                        android:layout_width="24dp"
+                                        android:layout_height="24dp"
+                                        android:src="@drawable/thermostat_24"
+                                        app:tint="@color/indicator_temp"/>
 
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="0dp"
-                            android:layout_height="80dp"
-                            android:layout_weight="1"
-                            android:layout_marginStart="8dp"
-                            app:cardCornerRadius="12dp"
-                            app:cardElevation="5dp"
-                            app:cardBackgroundColor="@color/md_theme_surfaceVariant"
-                            style="@style/Widget.Material3.CardView.Elevated">
+                                    <TextView
+                                        android:id="@+id/txt_temperature"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="32°C"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold"
+                                        android:textColor="@color/indicator_temp"/>
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="vertical"
-                                android:gravity="center"
-                                android:padding="8dp">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Temperatura"
+                                        android:textSize="12sp"
+                                        android:textColor="@color/md_theme_onSurface"
+                                        style="@style/TextAppearance.Material3.TitleMedium"/>
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
 
-                                <ImageView
-                                    android:layout_width="24dp"
-                                    android:layout_height="24dp"
-                                    android:src="@drawable/water_ph_24"
-                                    app:tint="@color/indicator_ph"/>
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="0dp"
+                                android:layout_height="80dp"
+                                android:layout_weight="1"
+                                android:layout_marginStart="8dp"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="5dp"
+                                app:cardBackgroundColor="@color/md_theme_surfaceVariant"
+                                style="@style/Widget.Material3.CardView.Elevated">
 
-                                <TextView
-                                    android:id="@+id/txt_ph"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="6.5"
-                                    android:textSize="16sp"
-                                    android:textStyle="bold"
-                                    android:textColor="@color/indicator_ph"/>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical"
+                                    android:gravity="center"
+                                    android:padding="8dp">
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="pH"
-                                    android:textSize="12sp"
-                                    android:textColor="@color/md_theme_onSurface"
-                                    style="@style/TextAppearance.Material3.TitleMedium"/>
-                            </LinearLayout>
-                        </androidx.cardview.widget.CardView>
+                                    <ImageView
+                                        android:layout_width="24dp"
+                                        android:layout_height="24dp"
+                                        android:src="@drawable/water_ph_24"
+                                        app:tint="@color/indicator_ph"/>
+
+                                    <TextView
+                                        android:id="@+id/txt_ph"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="6.5"
+                                        android:textSize="16sp"
+                                        android:textStyle="bold"
+                                        android:textColor="@color/indicator_ph"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="pH"
+                                        android:textSize="12sp"
+                                        android:textColor="@color/md_theme_onSurface"
+                                        style="@style/TextAppearance.Material3.TitleMedium"/>
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+                        </LinearLayout>
+
                     </LinearLayout>
                     <!-- Action Buttons -->
                     <LinearLayout
@@ -326,7 +335,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:padding="10dp"
-                        android:gravity="center_vertical"
+                        android:layout_gravity="bottom"
                         android:background="@color/md_theme_surface">
                         <!-- Like Button -->
                         <com.google.android.material.button.MaterialButton

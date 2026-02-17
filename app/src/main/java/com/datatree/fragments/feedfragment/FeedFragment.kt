@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import android.view.animation.DecelerateInterpolator
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -35,16 +36,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [FeedFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 
 @AndroidEntryPoint //agregar al anotacion para usar el ViewModel inyectado.
 //agregar al anotacion para usar el ViewModel inyectado.
@@ -75,6 +67,8 @@ class FeedFragment : Fragment() {
 
         // Animar la entrada del CardView con fade y elevación
 
+
+
     }
 
     override fun onCreateView(
@@ -93,6 +87,8 @@ class FeedFragment : Fragment() {
         //val alert = arguments?.getParcelable<AlertPost>("Alert_data")
 
         //alert?.let { viewModel.setAlert(it) }
+
+        (activity as? AppCompatActivity)?.supportActionBar?.title ="Mi feed"
 
         alertAdapter = AlertAdapter(requireContext(), alerts)
         binding.feedRecyclerview.apply {
@@ -316,26 +312,15 @@ class FeedFragment : Fragment() {
         fun newInstance(param1: String, param2: String) =
             FeedFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+                    //putString(ARG_PARAM1, param1)
+                  //  putString(ARG_PARAM2, param2)
                 }
             }
     }
 }
 
 class DepthPageTransformer : ViewPager2.PageTransformer {
-    /**
-     * Apply a property transformation to the given page.
-     *
-     * @param page Apply the transformation to this page
-     * @param position Position of page relative to the current front-and-center
-     * position of the pager. 0 is front and center. 1 is one full
-     * page position to the right, and -2 is two pages to the left.
-     * Minimum / maximum observed values depend on how many pages we keep
-     * attached, which depends on offscreenPageLimit.
-     *
-     * @see .setOffscreenPageLimit
-     */
+
     private val MIN_SCALE = 0.85f
     private val MIN_ALPHA = 0.5f
 

@@ -4,6 +4,7 @@ plugins {
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
     id("com.google.gms.google-services")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -50,6 +51,31 @@ android {
 }
 
 dependencies {
+
+    val room_version = "2.6.1" // Versión estable actual
+
+    // Core de Room (obligatorio)
+    implementation("androidx.room:room-runtime:$room_version")
+    implementation("androidx.room:room-ktx:$room_version") // Para corrutinas
+
+    // Procesador de anotaciones (obligatorio)
+    ksp("androidx.room:room-compiler:$room_version")
+
+    // Para testing (opcional pero recomendado)
+    testImplementation("androidx.room:room-testing:$room_version")
+
+    // If this project uses any Kotlin source, use Kotlin Symbol Processing (KSP)
+    // See Add the KSP plugin to your project
+    //ksp("androidx.room:room-compiler:$room_version")
+
+    // If this project only uses Java source, use the Java annotationProcessor
+    // No additional plugins are necessary
+    annotationProcessor("androidx.room:room-compiler:$room_version")
+
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation("androidx.room:room-ktx:$room_version")
+
+
     implementation("com.airbnb.android:lottie:6.0.0")
 
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
@@ -107,7 +133,11 @@ dependencies {
 
 
     //implementacion para ViewPager, con este se hace el corusel
+
+    //tambien nos sirve para mostrar las imagenes en el bottomsheet.
     implementation("androidx.viewpager2:viewpager2:1.1.0")
+
+
 
     //Dependencias para firebase
     implementation("com.google.firebase:firebase-database-ktx:20.2.2")
@@ -139,6 +169,11 @@ dependencies {
     //cargar imagenes
     kapt("com.github.bumptech.glide:compiler:4.16.0")
     implementation("com.github.bumptech.glide:glide:4.16.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
+
+    //para aplicar zoom a las imagenes
+    val photo_view_version="2.3.0"
+    implementation("com.github.chrisbanes:PhotoView:${photo_view_version}")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")

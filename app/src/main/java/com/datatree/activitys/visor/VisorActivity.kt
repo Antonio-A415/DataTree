@@ -84,11 +84,11 @@ class VisorActivity : AppCompatActivity() {
 
     private val coroutineScope = CoroutineScope(Dispatchers.Main + Job())
 
-    // OpenAI API Key - Deberías almacenar esto de forma segura (BuildConfig, etc.)
-    private val openAIApiKey = "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"
+    // agregar la clave api
+    private val openAIApiKey = ""
     private lateinit var openAIService: OpenAIService
     private lateinit var openAISearchService: OpenAISearchService
-    //private val client
+    //private val clienta
 
     //inyectar al dependencia
     private val viewModelVisor: VisorViewModel by viewModels()

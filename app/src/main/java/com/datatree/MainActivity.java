@@ -30,6 +30,7 @@ import com.airbnb.lottie.LottieAnimationView;
 import com.datatree.activitys.cultivos.CultivosActivity;
 import com.datatree.activitys.profile.Profile;
 import com.datatree.activitys.visor.VisorActivity;
+import com.datatree.core.chat.BottomSheetChatDialog;
 import com.datatree.fragments.analytics.AnalyticsFragment;
 import com.datatree.fragments.chatsfragment.ChatsFragment;
 import com.datatree.fragments.feedfragment.FeedFragment;
@@ -68,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     //Usamos la delegacion de ViewModelProvider en java
     private MainViewModel viewModel;
 
+    /*
     public void Init(){
         recyclerView = findViewById(R.id.recyclerViewMessages);
         inputMessage = findViewById(R.id.editTextMessage);
@@ -78,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(chatAdapter);
-        loadSampleMessages();
+        //loadSampleMessages();
 
 
         sendButton.setOnClickListener(new View.OnClickListener() {
@@ -86,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void onClick(View v) {
                 String text = inputMessage.getText().toString().trim();
                 if (!text.isEmpty()) {
-                    messageList.add(new DataMessage(text, true)); // Mensaje del usuario
+                    messageList.add(new DataMessage(text, true, "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=cruelty_free",System.currentTimeMillis())); // Mensaje del usuario
                     chatAdapter.notifyDataSetChanged();
                     recyclerView.smoothScrollToPosition(messageList.size() - 1);
 
@@ -98,14 +100,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
     }
 
+    */
+
     //Es en este metodo donde se agregan items al recyclerview como respuesta del modelo de gpt
 
     private void botReply() {
-        messageList.add(new DataMessage("Hola, soy un bot. ¿En qué puedo ayudarte?", false));
+        messageList.add(new DataMessage("Hola, soy un bot. ¿En qué puedo ayudarte?", false,"",System.currentTimeMillis()));
         chatAdapter.notifyDataSetChanged();
         recyclerView.smoothScrollToPosition(messageList.size() - 1);
     }
 
+    /*
     private void loadSampleMessages() {
         // Mensajes de ejemplo predefinidos sobre análisis de datos agrícolas
         messageList.add(new DataMessage("¡Hola! ¿Necesitas ayuda con tus cultivos?", false)); // Mensaje del bot
@@ -117,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         recyclerView.smoothScrollToPosition(messageList.size() - 1); // Desplazarse al último mensaje
 
     }
-
+*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -183,19 +188,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        Timer timer= new Timer();
 
         messageList = new ArrayList<>();
 
         chatAdapter = new ChatAdapter(messageList);
 
         //boton de icono de asistente para mostrar el BottomSheet
+
+
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showBottom();
+                //showBottom();
+
+                BottomSheetChatDialog chatSheet = new BottomSheetChatDialog();
+                chatSheet.show(getSupportFragmentManager(), "ChatBottomSheet");
+
             }
         });
+
 
 
     }
@@ -253,16 +264,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if(drawerLayout.isDrawerOpen(GravityCompat.START)){
             drawerLayout.closeDrawer(GravityCompat.START);
         }else{
-            super.onBackPressed();;
+            super.onBackPressed();
         }
     }
+    /*
     //Mostar el bottom
-    private void showBottom(){
+    private void showBottom_deprecated(){
         chatDialog= new Dialog(this);
 
         chatDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         chatDialog.setContentView(R.layout.bottom_sheet_chat);
-        ImageView buttonSend = chatDialog.findViewById(R.id.buttonSend);
+
 
         // Inicializar vistas del chat
         recyclerView = chatDialog.findViewById(R.id.recyclerViewMessages);
@@ -293,17 +305,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        /*
-        buttonSend.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                chatDialog.dismiss();
-                Toast.makeText(MainActivity.this,"En proceso de desarrollo",Toast.LENGTH_LONG).show();
 
-            }
-        });
-
-        */
 
         chatDialog.show();
         chatDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -312,7 +314,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         chatDialog.getWindow().setGravity(Gravity.BOTTOM);
 
     }
-
+*/
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu_toolbar,menu);
@@ -340,10 +342,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
 
-    public void asignarAnimacion(FloatingActionButton floatingActionButton){
-        LottieAnimationView lottieView=new LottieAnimationView(MainActivity.this);
-        lottieView.setAnimation(R.raw.icon_chat);
 
-    }
 
 }

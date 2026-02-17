@@ -1,7 +1,7 @@
 package com.datatree.core.repositories
 
 import android.content.Intent
-import com.datatree.core.data.firebaseclient.FirebaseClient
+import com.datatree.core.data.FirebaseClient
 import com.datatree.core.utils.DataModel
 import com.datatree.core.utils.DataModelType
 import com.datatree.core.utils.UserStatus

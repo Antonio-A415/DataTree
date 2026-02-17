@@ -1,7 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- Colores principales del tema agrícola -->
+    <color name="agri_background">#F8FBF6</color>
 
+
+    <!-- Colores para las tarjetas -->
+    <color name="card_primary">#FFFFFF</color>
+    <color name="card_secondary">#F0F7ED</color>
+    <color name="card_tech">#2E4057</color>
+    <color name="card_ranking">#1A2332</color>
+
+    <!-- Colores de texto -->
+    <color name="text_primary">#2C3E50</color>
+    <color name="text_secondary_">#7F8C8D</color>
+
+    <!-- Colores de acento temáticos -->
+    <color name="accent_green_">#27AE60</color>
+    <color name="accent_blue_">#3498DB</color>
+    <color name="accent_purple">#9B59B6</color>
+    <color name="accent_orange">#E67E22</color>
+    <color name="accent_teal">#1ABC9C</color>
+    <color name="accent_gold">#F39C12</color>
+
+    <!-- Colores para botones de acción -->
+    <color name="action_message">#25D366</color>
+    <color name="action_call">#34B7F1</color>
+    <color name="action_video">#8B5CF6</color>
+
+    <!-- Colores para logros -->
+    <color name="achievement_gold">#FFD700</color>
+    <color name="achievement_tech">#4A90E2</color>
+    <color name="achievement_eco">#32CD32</color>
+
+    <!-- Gradientes y fondos especiales -->
+    <color name="gradient_start">#56C596</color>
+    <color name="gradient_mid">#38A169</color>
+    <color name="gradient_end">#2F855A</color>
+
+    <!-- Colores para el sistema de progreso -->
+    <color name="progress_background">#E8F5E8</color>
+    <color name="progress_primary">#4CAF50</color>
+    <color name="progress_secondary">#81C784</color>
     <!-- Custom Agriculture Colors -->
     <color name="temperature_color">#FF6B35</color>
     <color name="temperature_bg">#FFF3E0</color>

@@ -23,11 +23,11 @@
             android:layout_marginTop="16dp"
             android:padding="10dp"
             android:gravity="center"
-            android:text="Alguien quiere reportar algo..."
+            android:text="Entrante"
             android:textSize="18sp"
             android:textStyle="bold"
             android:fontFamily="@font/poppins_medium"
-            android:textColor="@color/black"
+            android:textColor="@color/md_theme_onSurface"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
@@ -35,8 +35,8 @@
         <!-- Botón de Aceptar -->
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/acceptButton"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -48,8 +48,8 @@
         <!-- Botón de Rechazar -->
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/declineButton"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginStart="264dp"
             app:layout_constraintBottom_toBottomOf="parent"

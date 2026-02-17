@@ -1,4 +1,4 @@
-package com.datatree.core.data.firebaseclient
+package com.datatree.core.data
 
 import android.content.ContentValues.TAG
 import android.util.Log
